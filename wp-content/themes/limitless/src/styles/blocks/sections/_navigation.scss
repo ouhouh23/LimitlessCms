@@ -72,7 +72,7 @@
     margin-left: auto;
 
     @media screen and (min-width: 951px) {
-      display: none;
+      display: none !important;
     }
   }
 
