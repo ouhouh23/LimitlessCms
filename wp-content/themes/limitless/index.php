@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <?php wp_head() ?>
+
   <meta charset="utf-8">
 
   <title>hardcoded title</title>
