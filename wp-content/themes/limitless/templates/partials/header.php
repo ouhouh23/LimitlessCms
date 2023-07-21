@@ -1,16 +1,7 @@
 <header class="navigation-container wrapper">
   <div class="navigation">
-    <a href="#" class="logo logo_small">
-      <img 
-        src="wp-content/themes/limitless/assets/images/logo.svg" 
-        alt="site logo" 
-        class="logo__image"
-        width="54"
-        height="54" 
-      />
 
-      <span class="logo__text">Limitless</span>
-    </a>
+    <?php the_custom_component('logo', 'logo_small') ?>
 
     <div class="navigation__group">  
       <nav class="navigation__container">

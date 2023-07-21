@@ -40,7 +40,7 @@
     </div>
 
     <a href="#" class="scroll-button hero__scroll">
-      <img src="wp-content/themes/limitless/assets/images/icons/scroll-button.svg" alt="scroll button" class="scroll-button__icon" />
+      <img src="wp-content/themes/limitless/assets/images/icons/scroll-button.svg" alt="scroll button" class="scroll-" />
 
       <span class="scroll-button__text">
         Scroll
@@ -643,14 +643,14 @@
         type="button" 
         class="button button_square button_small button_primary button_rounded carousel__button carousel__button_left"
       >
-        <i class="button__icon fa-solid fa-arrow-left"></i>
+        <i class=" fa-solid fa-arrow-left"></i>
       </button>
 
       <button
         type="button" 
         class="button button_square button_small button_primary button_rounded carousel__button carousel__button_right"
       >
-        <i class="button__icon fa-solid fa-arrow-right"></i>
+        <i class=" fa-solid fa-arrow-right"></i>
       </button>
     </div>
   </section>

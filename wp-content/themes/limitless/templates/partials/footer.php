@@ -1,17 +1,7 @@
 <footer class="footer wrapper">
   <div class="footer__container">
     <div class="footer__icon-group">
-      <a href="#" class="logo">
-        <img 
-          src="wp-content/themes/limitless/assets/images/logo.svg" 
-          alt="site logo" 
-          class="logo__image"
-          width="54"
-          height="54" 
-        />
-
-        <span class="logo__text">Limitless</span>
-      </a>
+      <?php the_custom_component('logo') ?>
 
       <div class="footer__icons">
         <i class="social social_dark fa-brands fa-facebook-f"></i>
