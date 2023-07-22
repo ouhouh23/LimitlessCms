@@ -24,12 +24,34 @@ function the_custom_component($component, $class = '') {
 	require($path);	
 }
 
+function custom_theme_features() {
+	add_theme_support( 'custom-logo' );
+	add_theme_support('title-tag');
+	register_nav_menus( 
+		[
+			'headerMenu' => 'Header menu',
+			'FooterMenu' => 'Footer menu'
+		]);	
+	}
+
+function add_menu_link_class($atts, $item, $args) {
+  if (property_exists($args, 'link_class')) {
+    $atts['class'] = $args->link_class;
+  }
+
+  if ($item->current) {
+  	$class = 'navigation__item_active';
+  	$atts['class'] = isset($atts['class']) ? "{$atts['class']} $class" : $class;
+  }
+
+  return $atts;
+}
+
+add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
+
 add_action('wp_enqueue_scripts', 'get_styles');
 add_action('wp_enqueue_scripts', 'get_scripts');
-
-add_theme_support( 'custom-logo' );
+add_action('after_setup_theme', 'custom_theme_features');
 
 add_filter('upload_mimes', 'cc_mime_types');
-
-// connect scripts
-// enable menus;
+add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);

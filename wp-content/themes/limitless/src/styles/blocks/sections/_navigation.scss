@@ -23,6 +23,10 @@
   &_transparent {
     background: var(--navigation-gradient);
   }
+
+  @media screen and (max-width: 950px) {
+    width: 100%;
+  }
 }
 
 /*

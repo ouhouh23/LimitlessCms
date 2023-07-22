@@ -3082,6 +3082,11 @@ a {
 .navigation-container_transparent {
   background: var(--navigation-gradient);
 }
+@media screen and (max-width: 950px) {
+  .navigation-container {
+    width: 100%;
+  }
+}
 
 /*
  *Navigation block

@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <?php wp_head() ?>
-
-  <meta charset="utf-8">
-
-  <title>hardcoded title</title>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
+<?php get_template_part('templates/partials/head') ?>
   <section class="hero hero_illustrated wrapper">
     <?php get_template_part('templates/partials/header') ?>
 
@@ -40,7 +27,7 @@
     </div>
 
     <a href="#collection" class="scroll-button hero__scroll">
-      <img src="wp-content/themes/limitless/assets/images/icons/scroll-button.svg" alt="scroll button" class="scroll-" />
+      <img src="/wp-content/themes/limitless/assets/images/icons/scroll-button.svg" alt="scroll button" class="scroll-" />
 
       <span class="scroll-button__text">
         Scroll
@@ -74,7 +61,7 @@
     </div>
 
     <img 
-      src="wp-content/themes/limitless/assets/images/section/section-1.png"
+      src="/wp-content/themes/limitless/assets/images/section/section-1.png"
       alt="section image"
       class="section__image"
       width="734"
@@ -98,7 +85,7 @@
     <div class="collection__container">
       <div class="card card_horizontal">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-8.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-8.png"
           alt="card image"
           class="card__image"
           width="209"
@@ -131,7 +118,7 @@
 
       <div class="card card_horizontal">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-8.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-8.png"
           alt="card image"
           class="card__image"
           width="209"
@@ -164,7 +151,7 @@
 
       <div class="card card_horizontal">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-8.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-8.png"
           alt="card image"
           class="card__image"
           width="209"
@@ -197,7 +184,7 @@
 
       <div class="card card_horizontal">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-8.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-8.png"
           alt="card image"
           class="card__image"
           width="209"
@@ -245,7 +232,7 @@
     </div>
 
     <img 
-      src="wp-content/themes/limitless/assets/images/section/section-2.png"
+      src="/wp-content/themes/limitless/assets/images/section/section-2.png"
       alt="section image"
       class="section__image"
       width="700"
@@ -320,7 +307,7 @@
     <div class="collection__container">
       <div class="card collection__card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-9.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-9.png"
           alt="card image"
           class="card__image collection__image"
           width="104"
@@ -340,7 +327,7 @@
 
       <div class="card collection__card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-10.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-10.png"
           alt="card image"
           class="card__image collection__image"
           width="104"
@@ -360,7 +347,7 @@
 
       <div class="card collection__card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-11.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-11.png"
           alt="card image"
           class="card__image collection__image"
           width="104"
@@ -380,7 +367,7 @@
 
       <div class="card collection__card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-12.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-12.png"
           alt="card image"
           class="card__image collection__image"
           width="104"
@@ -400,7 +387,7 @@
 
       <div class="card collection__card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-10.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-10.png"
           alt="card image"
           class="card__image collection__image"
           width="104"
@@ -420,7 +407,7 @@
 
       <div class="card collection__card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-9.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-9.png"
           alt="card image"
           class="card__image collection__image"
           width="104"
@@ -456,7 +443,7 @@
     <div class="collection__container">
       <div class="card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-4.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-4.png"
           alt="card image"
           class="card__image"
           width="289"
@@ -493,7 +480,7 @@
 
       <div class="card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-5.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-5.png"
           alt="card image"
           class="card__image"
           width="289"
@@ -530,7 +517,7 @@
 
       <div class="card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-6.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-6.png"
           alt="card image"
           class="card__image"
           width="289"
@@ -567,7 +554,7 @@
 
       <div class="card">
         <img 
-          src="wp-content/themes/limitless/assets/images/cards/card-image-13.png"
+          src="/wp-content/themes/limitless/assets/images/cards/card-image-13.png"
           alt="card image"
           class="card__image"
           width="289"
@@ -614,7 +601,7 @@
   <section class="carousel">
     <div class="carousel__gallery">
       <img 
-        src="wp-content/themes/limitless/assets/images/carousel/carousel-1.png"
+        src="/wp-content/themes/limitless/assets/images/carousel/carousel-1.png"
         alt="carousel image"
         class="carousel__image"
         width="699"
@@ -622,7 +609,7 @@
       >
 
       <img 
-        src="wp-content/themes/limitless/assets/images/carousel/carousel-2.png"
+        src="/wp-content/themes/limitless/assets/images/carousel/carousel-2.png"
         alt="carousel image"
         class="carousel__image"
         width="699"
@@ -630,7 +617,7 @@
       >
 
       <img 
-        src="wp-content/themes/limitless/assets/images/carousel/carousel-3.png"
+        src="/wp-content/themes/limitless/assets/images/carousel/carousel-3.png"
         alt="carousel image"
         class="carousel__image"
         width="699"

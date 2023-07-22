@@ -1,3 +1,15 @@
+<?php 
+  $navigation = wp_nav_menu(
+  [
+    'theme_location' => 'headerMenu',
+    'container' => false,
+    'menu_class' => 'navigation__menu',
+    'fallback_cb' => '__return_empty_string',
+    'link_class' => 'link link_large link_primary navigation__item',
+    'echo' => false
+  ]);
+?>
+
 <header class="navigation-container wrapper">
   <div class="navigation">
 
@@ -5,28 +17,19 @@
 
     <div class="navigation__group">  
       <nav class="navigation__container">
-        <ul class="navigation__menu">
+        <?= $navigation ?>
+<!--         <ul class="navigation__menu">
             <li>
               <a href="#" class="link link_large link_primary navigation__item navigation__item_active">
-                  hardcoded menu
+                  About us
               </a>
             </li>
             <li>
-              <a href="#" class="link link_large link_primary navigation__item navigation__item_active">
-                  hardcoded menu
+              <a href="#" class="link link_large link_primary navigation__item">
+                  Our mission
               </a>
             </li>
-            <li>
-              <a href="#" class="link link_large link_primary navigation__item navigation__item_active">
-                  hardcoded menu
-              </a>
-            </li>
-            <li>
-              <a href="#" class="link link_large link_primary navigation__item navigation__item_active">
-                  hardcoded menu
-              </a>
-            </li>
-        </ul>
+        </ul> -->
       </nav>
 
       <button
