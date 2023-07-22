@@ -4,7 +4,7 @@ $custom_logo_id = get_theme_mod('custom_logo');
 $logo = wp_get_attachment_image_src($custom_logo_id , 'full');  
 ?>
 
-<a href="#" class="logo <?= $class ?>">
+<a href="<?= get_home_url() ?>" class="logo <?= $class ?>">
   <?php if (has_custom_logo()) : ?>
     <img 
       src="<?= esc_url($logo[0]) ?>" 

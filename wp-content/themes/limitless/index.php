@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <a href="#" class="scroll-button hero__scroll">
+    <a href="#collection" class="scroll-button hero__scroll">
       <img src="wp-content/themes/limitless/assets/images/icons/scroll-button.svg" alt="scroll button" class="scroll-" />
 
       <span class="scroll-button__text">
@@ -82,7 +82,7 @@
     >
   </section>
 
-  <section class="collection collection_vertical wrapper">
+  <section id="collection" class="collection collection_vertical wrapper">
     <header class="header collection__header">
 
       <h2 class="display_small heading_heavy header__heading">Our <span class="header__underline">Programs</span></h2>
@@ -656,5 +656,3 @@
   </section>
 
   <?php get_template_part('templates/partials/footer') ?>
-</body>
-</html>
