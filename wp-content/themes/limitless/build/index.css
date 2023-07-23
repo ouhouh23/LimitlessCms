@@ -2574,6 +2574,10 @@ a {
     margin-bottom: -3rem;
   }
 }
+.collection__placeholder {
+  text-align: center;
+  margin-top: 2rem;
+}
 .collection_vertical .collection__container {
   margin-bottom: 0;
   row-gap: 2.5rem;

@@ -66,6 +66,11 @@
     }
   }
 
+  &__placeholder {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
   &_vertical {
     .collection__container {
       margin-bottom: 0;

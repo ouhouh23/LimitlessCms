@@ -3,7 +3,7 @@
     <?php get_template_part('templates/partials/header') ?>
 
     <div class="hero__text">
-      <span class="caps caps_heavy hero__caption">Limitless</span>
+      <span class="caps caps_heavy hero__caption"><?php bloginfo('name') ?></span>
 
       <h1 class="display_small heading_heavy">
         Enabling emerging adults to adapt and succeed.
@@ -38,7 +38,7 @@
   <section class="section section_tight">
     <div class="section__text">
       <h2 class="display_small heading_heavy section__heading">
-        About <span class="section__caption">Limitless</span>
+        About <span class="section__caption"><?php bloginfo('name') ?></span>
       </h2>
 
       <div class="text-block section__block">
@@ -82,8 +82,67 @@
       </p> 
     </header>
 
-    <div class="collection__container">
-      <div class="card card_horizontal">
+    <?php
+      global $post;
+
+      $posts = get_posts([
+        'posts_per_page' => 4,
+        'category_name' => 'programs',
+        'post_type' => 'post',
+        'order'       => 'ASC'
+      ]);
+
+      if (empty($posts)) : ?>
+        <h3 class="heading_xl heading_heavy collection__placeholder">No programs yet.</h3>
+
+      <?php else : ?>
+        <div class="collection__container">
+
+        <?php foreach ($posts as $post) : ?>
+          <?php setup_postdata($post) ?>
+
+          <div class="card card_horizontal">
+            <img 
+              src="<?= get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : '/wp-content/themes/limitless/assets/images/cards/placeholder-1.png' ?>"
+              <?php 
+                $thumbnail_id = get_post_thumbnail_id($post->ID);
+                $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+                $alt = $alt ? $alt : 'program image';
+              ?>
+              alt="<?= $alt?>"
+              class="card__image"
+              width="209"
+              height="209"
+            >
+
+            <div class="card__text">
+              <h3 class="heading_large heading_heavy">
+                <?php the_title() ?>
+              </h3>
+
+              <p class="paragraph_sm paragraph_regular card__paragraph">
+                <?php the_content() ?>
+              </p>
+
+              <div class="card__buttons">
+                <div class="card__button-group">
+                  <a 
+                    href="<?php the_permalink() ?>" 
+                    class="button button_small button_primary card__button"
+                  >
+                      Read more
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endforeach;
+
+        wp_reset_postdata();
+      endif 
+    ?>
+
+<!--       <div class="card card_horizontal">
         <img 
           src="/wp-content/themes/limitless/assets/images/cards/card-image-8.png"
           alt="card image"
@@ -213,7 +272,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
