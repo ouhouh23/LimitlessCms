@@ -31,3 +31,15 @@
     padding: 5rem 0;
   }
 }
+
+%user-paragraph-primary {
+  font-size: $font-paragraph-lg;
+  line-height: $heights-paragraph-lg;
+  font-weight: $weight-paragraph-heavy;
+}
+
+%user-paragraph-secondary {
+  font-size: $font-paragraph-md;
+  line-height: $heights-paragraph-md;
+  font-weight: $weight-paragraph-regular;
+}

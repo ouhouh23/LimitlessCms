@@ -14,7 +14,7 @@ function cc_mime_types($mimes) {
   return $mimes;
 }
 
-function the_custom_component($component, $class = '') {
+function the_custom_component($component, $class = '', $atts = null) {
 	$path = "wp-content/themes/limitless/templates/components/$component.php";
 
 	if (!file_exists($path)) {
@@ -28,7 +28,7 @@ function custom_theme_features() {
 	add_theme_support('custom-logo');
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails'); 
-	
+
 	register_nav_menus( 
 		[
 			'headerMenu' => 'Header menu',
@@ -57,3 +57,42 @@ add_action('after_setup_theme', 'custom_theme_features');
 
 add_filter('upload_mimes', 'cc_mime_types');
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
+
+function render_posts($number, $category, $type = 'post', $component, $component_class = '') {
+  global $post;
+
+  $posts = get_posts([
+    'posts_per_page' => $number,
+    'category_name' => $category,
+    'post_type' => $type,
+    'order'       => 'ASC'
+  ]);
+
+  if (empty($posts)) {
+     echo "<h3 class='heading_xl heading_heavy collection__placeholder'>No $category yet.</h3>";
+  }
+
+  else {
+    echo '<div class="collection__container">';
+
+    foreach ($posts as $post) {
+      setup_postdata($post);
+
+      $src = get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : 
+        '/wp-content/themes/limitless/assets/images/cards/placeholder-1.png';
+      $thumbnail_id = get_post_thumbnail_id($post->ID);
+      $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
+        get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "$category image";
+
+      the_custom_component($component, $component_class, [
+        'src' => $src,
+        'alt' => $alt
+      ]);
+    }
+
+    echo '</div>';
+  }
+
+  wp_reset_postdata();
+} 
+

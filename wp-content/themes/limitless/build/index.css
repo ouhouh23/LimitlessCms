@@ -435,6 +435,18 @@ Version: 1.0
   }
 }
 
+.section__text > p {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.card__text > p {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -856,6 +868,10 @@ a {
 .card__text {
   padding-top: 1.5rem;
 }
+.card__text > p {
+  margin: 0.75rem 0 1.5rem;
+  color: #414141;
+}
 .card__tags {
   display: flex; /* Без него странный зазор */
   flex-wrap: wrap;
@@ -867,10 +883,6 @@ a {
   margin-right: 0.5rem;
 }
 .card__heading {
-  color: #414141;
-}
-.card__paragraph {
-  margin: 0.75rem 0 1.5rem;
   color: #414141;
 }
 .card__price {
@@ -3357,20 +3369,20 @@ a {
 .section_default .section__text {
   max-width: 43.7rem;
 }
+.section_default .section__text > p {
+  margin-top: 2.5rem;
+}
+@media screen and (min-width: 1085px) {
+  .section_default .section__text > p {
+    letter-spacing: -0.5px;
+  }
+}
 @media screen and (min-width: 1085px) {
   .section_default .section__text {
     max-width: 39.6rem;
     margin-left: 2.5rem;
     margin-right: auto;
     padding: 0 1rem 0 0;
-  }
-}
-.section_default .section__paragraph {
-  margin-top: 2.5rem;
-}
-@media screen and (min-width: 1085px) {
-  .section_default .section__paragraph {
-    letter-spacing: -0.5px;
   }
 }
 .section_interactive {
@@ -3388,15 +3400,15 @@ a {
   margin-bottom: 2.5rem;
   padding: 0 1rem;
 }
+.section_interactive .section__text > p {
+  color: #414141;
+}
 @media screen and (min-width: 1085px) {
   .section_interactive .section__text {
     max-width: 36rem;
     margin-left: auto;
     margin-bottom: 3.4rem;
   }
-}
-.section_interactive .section__paragraph {
-  color: #414141;
 }
 .section_interactive .section__carousel {
   padding: 0;

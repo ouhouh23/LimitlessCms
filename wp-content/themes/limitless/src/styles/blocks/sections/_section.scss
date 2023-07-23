@@ -24,6 +24,10 @@
     max-width: 45.7rem;
     margin-top: 2rem;
 
+    & > p {
+      @extend %user-paragraph-primary;
+    }
+
     @media screen and (min-width: 1085px) {
       padding: 2.5rem 4.8rem 2.5rem 1rem;
       margin: {
@@ -138,6 +142,14 @@
     .section__text {
       max-width: 43.7rem;
 
+      & > p {
+        margin-top: 2.5rem;
+
+        @media screen and (min-width: 1085px) {
+          letter-spacing: -0.5px;
+        }       
+      }
+
       @media screen and (min-width: 1085px) {
         max-width: 39.6rem;
         margin: {
@@ -146,14 +158,6 @@
         }
 
         padding: 0 1rem 0 0;
-      }
-    }
-
-    .section__paragraph {
-      margin-top: 2.5rem;
-
-      @media screen and (min-width: 1085px) {
-        letter-spacing: -0.5px;
       }
     }
   }
@@ -174,6 +178,10 @@
       margin-bottom: 2.5rem;
       padding: 0 1rem;
 
+      & > p {
+        color: $neutral-default;
+      }
+
       @media screen and (min-width: 1085px) {
         max-width: 36rem;
         margin: {
@@ -181,10 +189,6 @@
           bottom: 3.4rem;
         }
       }
-    }
-
-    .section__paragraph {
-      color: $neutral-default;
     }
 
     .section__carousel {

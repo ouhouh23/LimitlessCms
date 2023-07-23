@@ -10,6 +10,13 @@
 
   &__text {
     padding-top: 1.5rem;
+
+    & > p {
+      @extend %user-paragraph-secondary;
+      
+      margin: 0.75rem 0 1.5rem;
+      color: $neutral-2;
+    }
   }
 
   &__tags {
@@ -26,11 +33,6 @@
   }
 
   &__heading {
-    color: $neutral-2;
-  }
-
-  &__paragraph {
-    margin: 0.75rem 0 1.5rem;
     color: $neutral-2;
   }
 
