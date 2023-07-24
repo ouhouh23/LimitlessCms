@@ -12,7 +12,9 @@
       <?php the_title() ?>
     </h3>
 
-    <?php the_content() ?>
+    <p>
+      <?= wp_trim_words(get_the_excerpt(), 40) ?>
+    </p>
 
     <div class="card__buttons">
       <div class="card__button-group">

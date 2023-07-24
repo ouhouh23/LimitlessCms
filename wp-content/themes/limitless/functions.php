@@ -49,14 +49,39 @@ function add_menu_link_class($atts, $item, $args) {
   return $atts;
 }
 
-add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
+function register_post_types() {
+  register_post_type('programs', [
+    'public' => true,
+    'show_in_rest' => true,
+    'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+    'has_archive' => true,
+    'menu_icon' => 'dashicons-media-document',
+
+    'description' => 'Tortor sit nisl purus nunc massa diam velit hac in. Nisl, sem adipiscing risus 
+      pulvinar non sed nullam id integer. Integer quis porttitor mauris arcu, pretium orci quam. 
+      Enim cursus mattis nunc aliquam pharetra feugiat ante sollicitudin',
+      
+    'labels' => [
+      'name' => 'Programs',
+      'add_new_item' => 'Add New Program',
+      'edit_item' => 'Edit Program',
+      'all_items' => 'All Programs',
+      'singular_name' => 'Program'
+    ],
+  ]);
+}
 
 add_action('wp_enqueue_scripts', 'get_styles');
 add_action('wp_enqueue_scripts', 'get_scripts');
 add_action('after_setup_theme', 'custom_theme_features');
+add_action('init', 'register_post_types');
 
+add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 add_filter('upload_mimes', 'cc_mime_types');
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
+
+
+
 
 function render_posts($number, $category, $type = 'post', $component, $component_class = '') {
   global $post;
@@ -65,7 +90,7 @@ function render_posts($number, $category, $type = 'post', $component, $component
     'posts_per_page' => $number,
     'category_name' => $category,
     'post_type' => $type,
-    'order'       => 'ASC'
+    'order' => 'ASC'
   ]);
 
   if (empty($posts)) {
