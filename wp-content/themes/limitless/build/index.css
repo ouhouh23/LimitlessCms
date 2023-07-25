@@ -884,6 +884,12 @@ a {
 }
 .card__heading {
   color: #414141;
+  text-align: center;
+}
+@media screen and (min-width: 1085px) {
+  .card__heading {
+    text-align: initial;
+  }
 }
 .card__price {
   color: #414141;
@@ -2527,7 +2533,10 @@ a {
   box-shadow: none;
 }
 .carousel__button_left {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+}
+.carousel__button_right {
+  margin-left: 0.5rem;
 }
 
 .collection {
@@ -2574,7 +2583,7 @@ a {
   }
 }
 .collection__button {
-  display: block;
+  display: inline-block;
   margin: 0 auto;
 }
 .collection__carousel-group {
@@ -3342,6 +3351,9 @@ a {
     max-width: 52%;
   }
 }
+.section__role {
+  text-align: center;
+}
 @media screen and (min-width: 1085px) {
   .section_tight .section__text {
     max-width: 46.7rem;
@@ -3930,4 +3942,23 @@ a {
 }
 .text-block_light .text-block__text {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.pagination {
+  align-items: center;
+}
+.pagination > a {
+  color: #909ba1;
+}
+.pagination > span {
+  color: #ec6041;
+}
+.pagination > a, .pagination span {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.pagination > a::last-of-type, .pagination span::last-of-type {
+  margin-right: 0;
 }

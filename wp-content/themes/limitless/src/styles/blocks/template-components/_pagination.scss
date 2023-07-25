@@ -1,0 +1,22 @@
+.pagination {
+	align-items: center;
+
+	& > a {
+		color: $neutral-disabled;
+	}
+
+	& > span {
+		color: $primary;
+	}
+
+	& > a, span {
+		font-size: $font-link-large;
+		line-height: $heights-link-md;
+		display: inline-block;
+		margin-right: 0.5rem;
+
+		&::last-of-type {
+			margin-right: 0;
+		}
+	}
+}

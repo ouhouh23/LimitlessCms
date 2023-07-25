@@ -45,7 +45,11 @@
     box-shadow: none;
 
     &_left {
-      margin-right: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    &_right {
+      margin-left: 0.5rem;
     }
   }
 }

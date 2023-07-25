@@ -7,7 +7,7 @@
     <?php the_content() ?>
 
       <a  
-      href="<?= wp_get_referer() ?>" 
+      href="<?= wp_get_referer() ?>#collection" 
       class="button button_large button_primary section__button">
 
       Go back

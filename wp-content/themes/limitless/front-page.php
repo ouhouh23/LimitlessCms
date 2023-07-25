@@ -97,12 +97,12 @@
         We exist for <br> your success.
       </h2>
 
-      <button  
-        type="button" 
+      <a  
+        href="<?= site_url('/mission') ?>" 
         class="button button_large button_primary section__button">
 
         Our mission
-      </button>
+      </a>
     </div>
 
     <img 
@@ -159,147 +159,31 @@
     </form>
   </section>
 
-  <section class="collection collection_vertical collection_inlined">
-    <header class="header collection__header">
-      <h3 class="heading_xxl heading_heavy header__heading">Our <span class="header__underline">Team</span></h3>
+  <?php 
+    if(post_type_exists('team')) : 
+      $post_type = get_post_type_object('team');
+    ?>
+      <section class="collection collection_vertical collection_inlined">
+        <header class="header collection__header">
+          <h3 class="heading_xxl heading_heavy header__heading">Our <span class="header__underline"><?= $post_type->labels->name ?></span></h3>
 
-      <p class="paragraph_base paragraph_regular header__text">
-        Tortor sit nisl purus nunc massa diam velit hac in. Nisl,
-        sem adipiscing risus pulvinar non sed nullam id integer. 
-        Integer quis porttitor mauris arcu, pretium orci quam. 
-        Enim cursus mattis nunc aliquam pharetra feugiat ante sollicitudin. 
-      </p> 
+          <?php if (!empty($post_type->description)) : ?>
+            <p class="paragraph_base paragraph_regular header__text">
+              <?= $post_type->description ?>
+            </p> 
+          <?php endif ?>
 
-      <button  
-        type="button" 
-        class="button button_large button_primary collection__button">
+          <a  
+            href="<?= get_post_type_archive_link('team') ?>" 
+            class="button button_large button_primary collection__button">
+            All team members
+          </a>
+        </header>
 
-        All team members
-      </button>
-    </header>
-
-    <div class="collection__container">
-      <div class="card collection__card">
-        <img 
-          src="/wp-content/themes/limitless/assets/images/cards/card-image-9.png"
-          alt="card image"
-          class="card__image collection__image"
-          width="104"
-          height="104"
-        >
-
-        <div class="card__text collection__text">
-          <h3 class="heading_md heading_heavy collection__heading">
-            Dianne Russell
-          </h3>
-
-          <h3 class="caps caps_regular card__heading">
-            Megan Eastman
-          </h3>
-        </div>
-      </div>
-
-      <div class="card collection__card">
-        <img 
-          src="/wp-content/themes/limitless/assets/images/cards/card-image-10.png"
-          alt="card image"
-          class="card__image collection__image"
-          width="104"
-          height="104"
-        >
-
-        <div class="card__text collection__text">
-          <h3 class="heading_md heading_heavy collection__heading">
-            Leslie Alexander
-          </h3>
-
-          <h3 class="caps caps_regular card__heading">
-            Megan Eastman
-          </h3>
-        </div>
-      </div>
-
-      <div class="card collection__card">
-        <img 
-          src="/wp-content/themes/limitless/assets/images/cards/card-image-11.png"
-          alt="card image"
-          class="card__image collection__image"
-          width="104"
-          height="104"
-        >
-
-        <div class="card__text collection__text">
-          <h3 class="heading_md heading_heavy collection__heading">
-            Esther Howard
-          </h3>
-
-          <h3 class="caps caps_regular card__heading">
-            Megan Eastman
-          </h3>
-        </div>
-      </div>
-
-      <div class="card collection__card">
-        <img 
-          src="/wp-content/themes/limitless/assets/images/cards/card-image-12.png"
-          alt="card image"
-          class="card__image collection__image"
-          width="104"
-          height="104"
-        >
-
-        <div class="card__text collection__text">
-          <h3 class="heading_md heading_heavy collection__heading">
-            Jacob Jones
-          </h3>
-
-          <h3 class="caps caps_regular card__heading">
-            Megan Eastman
-          </h3>
-        </div>
-      </div>
-
-      <div class="card collection__card">
-        <img 
-          src="/wp-content/themes/limitless/assets/images/cards/card-image-10.png"
-          alt="card image"
-          class="card__image collection__image"
-          width="104"
-          height="104"
-        >
-
-        <div class="card__text collection__text">
-          <h3 class="heading_md heading_heavy collection__heading">
-            Esther Howard
-          </h3>
-
-          <h3 class="caps caps_regular card__heading">
-            Megan Eastman
-          </h3>
-        </div>
-      </div>
-
-      <div class="card collection__card">
-        <img 
-          src="/wp-content/themes/limitless/assets/images/cards/card-image-9.png"
-          alt="card image"
-          class="card__image collection__image"
-          width="104"
-          height="104"
-        >
-
-        <div class="card__text collection__text">
-          <h3 class="heading_md heading_heavy collection__heading">
-            Jacob Jones
-          </h3>
-
-          <h3 class="caps caps_regular card__heading">
-            Megan Eastman
-          </h3>
-        </div>
-      </div>
-    </div>
-  </section>
+        <?php render_posts(5, '', 'team', 'card-custom', 'card_horizontal') ?>
+      </section>
+    <?php endif 
+  ?>
 
   <section class="collection wrapper">
     <header class="header collection__header">
