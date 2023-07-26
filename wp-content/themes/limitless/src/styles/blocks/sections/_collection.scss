@@ -29,7 +29,7 @@
     }
 
     @media screen and (min-width: 1085px) {
-      grid-auto-flow: column;
+      grid-template-columns: 22% 22% 22% 22%;
       justify-content: space-between;
     }
 
@@ -51,7 +51,8 @@
   }
 
   &__button {
-    display: inline-block;
+    display: block;
+    width: fit-content;
     margin: 0 auto;
   }
 
@@ -165,13 +166,6 @@
       .collection__image {
         max-width: 6.5rem;
         margin-right: 1.5rem;
-      }
-
-      .collection__button {
-        margin: 1rem 0 0;
-        font-size: $font-buttons-sm;
-        line-height: $heights-buttons-md;
-        padding: 0.31rem 0.56rem;
       }
     }
   }

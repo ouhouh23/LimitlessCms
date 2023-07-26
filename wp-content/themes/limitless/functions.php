@@ -1,5 +1,12 @@
 <?php
 
+function dd($value) {
+  echo '<pre>';
+  var_dump($value);
+  echo '</pre>';
+  die();
+}
+
 function get_styles() {
 	wp_enqueue_style('main-style', get_theme_file_uri('build/index.css'), null, microtime());
 }
@@ -107,8 +114,42 @@ add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 add_filter('upload_mimes', 'cc_mime_types');
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
+function get_posts_title($type) {
+  if ($type !== 'post') {
+   return get_post_type_object($type)->labels->name;
+  }
 
-function render_posts($number, $category, $type = 'post', $component, $component_class = '') {
+  return 'Posts';
+}
+
+function get_posts_description($type, $category, $posts) {
+  if ($type !== 'post') {
+    return get_post_type_object($type)->description;
+  }
+  $categories = get_the_category($posts[0]);
+
+  foreach($categories as $item) {
+    if ($item->name == $category) {
+      return $item->description;
+    }
+  }
+}
+
+function posts_remain($type, $category, $posts) {
+  if ($type == 'post') {
+    $categories = get_the_category($posts[0]);
+
+    foreach($categories as $item) {
+      if ($item->name == $category) {
+         return $item->category_count > count($posts);
+      }
+    }
+  }
+
+  return intval(wp_count_posts($type)->publish) > count($posts);
+}
+
+function render_posts($number, $type = 'post', $category = '', $component, $css_class = '') {
   global $post;
 
   $posts = get_posts([
@@ -120,12 +161,37 @@ function render_posts($number, $category, $type = 'post', $component, $component
 
   if (empty($posts)) {
      echo "<h3 class='heading_xl heading_heavy collection__placeholder'>No posts yet.</h3>";
+     return;
   }
 
-  else {
-    echo '<div class="collection__container">';
+  $title = get_posts_title($type);
+  $description = get_posts_description($type, $category, $posts);
+?>
 
-    foreach ($posts as $post) {
+  <section id="collection" class="collection <?= $css_class ?> wrapper">
+  <header class="header collection__header">
+
+    <h2 class="display_small heading_heavy header__heading">Our <span class="header__underline"><?= $title ?></span></h2>
+
+    <?php if (!empty($description)) : ?>
+      <p class="paragraph_base paragraph_regular header__text">
+        <?= $description ?>
+      </p> 
+    <?php endif ?>
+
+    <?php if (str_contains($css_class, 'collection_inlined') && posts_remain($type, $category, $posts)) : ?>
+      <a  
+        href="<?= $type == 'post' ? get_site_url(null, '/blog/') : get_post_type_archive_link($type) ?>" 
+        class="button button_large button_primary collection__button">
+
+        Watch all
+      </a>
+    <?php endif ?>
+  </header>
+
+  <div class="collection__container">
+
+  <?php foreach ($posts as $post) {
       setup_postdata($post);
 
       $src = get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : 
@@ -134,14 +200,23 @@ function render_posts($number, $category, $type = 'post', $component, $component
       $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
         get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "$category image";
 
-      the_custom_component($component, $component_class, [
+      the_custom_component($component, '', [
         'src' => $src,
         'alt' => $alt
       ]);
-    }
-
-    echo '</div>';
   }
+  echo '</div>';
+  
+  if (!str_contains($css_class, 'collection_inlined') && posts_remain($type, $category, $posts)) : ?>
+    <a  
+      href="<?= $type == 'post' ? get_site_url(null, '/blog/') : get_post_type_archive_link($type) ?>" 
+      class="button button_large button_primary collection__button">
+
+      Watch all
+    </a>
+  <?php endif;
+
+  echo '</section>';
 
   wp_reset_postdata();
 } 

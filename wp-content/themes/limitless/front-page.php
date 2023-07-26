@@ -68,28 +68,9 @@
       width="734"
       height="842"
     >
-  </section>
+  </section>f
 
-  <?php 
-    if(post_type_exists('programs')) : 
-      $post_type = get_post_type_object('programs');
-    ?>
-      <section id="collection" class="collection collection_vertical wrapper">
-        <header class="header collection__header">
-
-          <h2 class="display_small heading_heavy header__heading">Our <span class="header__underline"><?= $post_type->labels->name?></span></h2>
-
-          <?php if (!empty($post_type->description)) : ?>
-            <p class="paragraph_base paragraph_regular header__text">
-              <?= $post_type->description ?>
-            </p> 
-          <?php endif ?>
-        </header>
-
-        <?php render_posts(4, '', 'programs', 'card', 'card_horizontal') ?>
-      </section>
-    <?php endif 
-  ?>
+  <?php render_posts(4, 'programs', '', 'card-horizontal', 'collection_vertical') ?>
 
   <section class="section section_default">
     <div class="section__text">
@@ -159,33 +140,11 @@
     </form>
   </section>
 
-  <?php 
-    if(post_type_exists('team')) : 
-      $post_type = get_post_type_object('team');
-    ?>
-      <section class="collection collection_vertical collection_inlined">
-        <header class="header collection__header">
-          <h3 class="heading_xxl heading_heavy header__heading">Our <span class="header__underline"><?= $post_type->labels->name ?></span></h3>
+  <?php render_posts(5, 'team', '', 'card-custom', 'collection_vertical collection_inlined') ?>
 
-          <?php if (!empty($post_type->description)) : ?>
-            <p class="paragraph_base paragraph_regular header__text">
-              <?= $post_type->description ?>
-            </p> 
-          <?php endif ?>
+  <?php render_posts(4, 'post', 'Posts', 'card') ?>
 
-          <a  
-            href="<?= get_post_type_archive_link('team') ?>" 
-            class="button button_large button_primary collection__button">
-            All team members
-          </a>
-        </header>
-
-        <?php render_posts(5, '', 'team', 'card-custom', 'card_horizontal') ?>
-      </section>
-    <?php endif 
-  ?>
-
-  <section class="collection wrapper">
+  <!-- <section class="collection wrapper">
     <header class="header collection__header">
 
       <h2 class="display_small heading_heavy header__heading">The <span class="header__underline">Blog</span></h2>
@@ -354,7 +313,7 @@
 
       All blog posts
     </button>
-  </section>
+  </section> -->
 
   <section class="carousel">
     <div class="carousel__gallery">
