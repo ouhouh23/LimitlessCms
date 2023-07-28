@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card <?= $class ?>">
   <img 
     src="<?= $atts['src'] ?>"
     alt="<?= $atts['alt'] ?>"

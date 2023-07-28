@@ -74,7 +74,8 @@
       ?>
     </div>
   <?php endif;
-    render_pagination();
+    render_pagination('team', 'collection');
+    wp_reset_postdata();
   ?>
 </section>
 

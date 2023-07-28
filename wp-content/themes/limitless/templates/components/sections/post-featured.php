@@ -3,7 +3,7 @@
     <span class="caps caps_regular hero__caption">Featured post</span>
 
     <h1 class="heading_xxl heading_heavy">
-      <?= wp_trim_words(get_the_excerpt(), 20) ?>
+      <?= wp_trim_words(get_the_excerpt(), 6) ?>
     </h1>
 
     <a

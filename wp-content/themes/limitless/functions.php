@@ -35,7 +35,7 @@ function custom_theme_features() {
 	add_theme_support('custom-logo');
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
-  add_image_size('featuredPost', 500, 500, true); 
+  add_image_size('compact', 289, 217, true); 
 
 	register_nav_menus( 
 		[
@@ -104,7 +104,7 @@ function post_filters($query) {
     $query->set('posts_per_page', 2);
   }
 
-  if (!is_admin() && $_SERVER['REQUEST_URI'] == "/blog/" && $query->is_main_query()) {
+  if (!is_admin() && str_contains($_SERVER['REQUEST_URI'], "/blog/") && $query->is_main_query()) {
     $query->set('posts_per_page', 7);
     $query->set('category_name', 'Posts');
   }
@@ -170,7 +170,7 @@ function posts_remain($type, $category, $posts) {
   return intval(wp_count_posts($type)->publish) > count($posts);
 }
 
-function render_posts($number, $type = 'post', $category = '', $component, $css_class = '') {
+function render_posts($number, $type = 'post', $category = '', $component, $css_class = '', $size = null) {
   global $post;
 
   $posts = get_posts([
@@ -190,7 +190,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
 ?>
 
   <section id="collection" class="collection <?= $css_class ?> wrapper">
-  <header class="header collection__header">
+    <header class="header collection__header">
 
     <h2 class="display_small heading_heavy header__heading">Our <span class="header__underline"><?= $title ?></span></h2>
 
@@ -216,10 +216,10 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
       setup_postdata($post);
 
       $src = get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : 
-        '/wp-content/themes/limitless/assets/images/cards/placeholder-1.png';
+        "/wp-content/themes/limitless/assets/images/cards/placeholder.png";
       $thumbnail_id = get_post_thumbnail_id($post->ID);
       $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
-        get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "$category image";
+        get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "content illustration";
 
       the_custom_component($component, '', [
         'src' => $src,
@@ -243,7 +243,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
   wp_reset_postdata();
 } 
 
-function render_pagination() {
+function render_pagination($page, $section = null) {
   $links = paginate_links([
     'prev_text' => ('<button type="button" class="button button_square 
                       button_small button_primary button_rounded 
@@ -257,7 +257,7 @@ function render_pagination() {
                         <i class=" fa-solid fa-arrow-right"></i>
                     </button>'
                   ),
-    'base'    => site_url('/team/%_%#collection'),
+    'base'    => site_url("/$page/%_%#$section"),
   ]);
 
   if(!$links) {

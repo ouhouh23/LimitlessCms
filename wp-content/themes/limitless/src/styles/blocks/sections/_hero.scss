@@ -185,6 +185,8 @@
 
   &_tight {
     .hero__body {
+      justify-content: center;
+
       margin: {
         top: 2.2rem;
         bottom: 2.2rem;
@@ -209,6 +211,8 @@
     }
 
     .hero__image {
+      aspect-ratio: 1;
+      width: 100%;
       margin-bottom: 0;
     }
   }
@@ -244,7 +248,7 @@
 
     .hero__image {
       @media screen and (min-width: 1085px) {
-        max-width: 70%;
+        max-width: 32rem;
       }
     }
   }

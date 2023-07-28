@@ -9,6 +9,7 @@
   }
 
   &__text {
+    width: 100%;
     padding-top: 1.5rem;
     flex-grow: 1;
     display: flex;
@@ -107,7 +108,6 @@
 
       .card__image {
         max-width: 50%;
-        width: auto;
       }
 
       .card__text {
@@ -185,6 +185,12 @@
         text-decoration-line: line-through;
         text-decoration-thickness: 2px;
       }
+    }
+  }
+
+  &_compact {
+    .card__image {
+      aspect-ratio: 1.33;
     }
   }
 }

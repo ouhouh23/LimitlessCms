@@ -13,6 +13,14 @@
     margin: 0 auto;
   }
 
+  &__heading {
+    text-align: center;
+
+    @media screen and (min-width: 1085px) {
+      text-align: initial;
+    }
+  }
+
   &__container {
     max-width: 81.7rem;
     margin: 2.5rem auto 4rem;
