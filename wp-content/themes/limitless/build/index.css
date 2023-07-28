@@ -2236,7 +2236,7 @@ a {
   width: fit-content;
   color: #fff;
   text-transform: uppercase;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   line-height: 1.11;
   font-weight: 700;
   /* Tags solid */
@@ -2900,6 +2900,7 @@ a {
   }
 }
 .hero__button {
+  display: inline-block;
   margin-top: 2.5rem;
   width: 65%;
   white-space: nowrap;

@@ -68,9 +68,10 @@
       width="734"
       height="842"
     >
-  </section>f
+  </section>
 
-  <?php render_posts(4, 'programs', '', 'card-horizontal', 'collection_vertical') ?>
+  <?
+  php render_posts(4, 'programs', '', 'card-horizontal', 'collection_vertical') ?>
 
   <section class="section section_default">
     <div class="section__text">

@@ -8,6 +8,14 @@
   >
 
   <div class="card__text">
+    <?php
+    if (!empty($atts['categories'])) : ?>
+      <div class="card__tags">
+        <?php foreach($atts['categories'] as $category) : ?>
+          <a href="<?= site_url("posts?category=$category") ?>" class="tag tag_primary tag_outlined card__tag"><?= $category ?></a>
+        <?php endforeach?>
+      </div>
+    <?php endif?>
     <h3 class="heading_large heading_heavy">
       <?php the_title() ?>
     </h3>

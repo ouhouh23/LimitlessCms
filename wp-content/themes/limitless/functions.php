@@ -34,7 +34,8 @@ function the_custom_component($component, $class = '', $atts = null) {
 function custom_theme_features() {
 	add_theme_support('custom-logo');
 	add_theme_support('title-tag');
-	add_theme_support('post-thumbnails'); 
+	add_theme_support('post-thumbnails');
+  add_image_size('featuredPost', 500, 500, true); 
 
 	register_nav_menus( 
 		[
@@ -102,6 +103,11 @@ function post_filters($query) {
   if (!is_admin() && is_post_type_archive('team') && $query->is_main_query()) {
     $query->set('posts_per_page', 2);
   }
+
+  if (!is_admin() && $_SERVER['REQUEST_URI'] == "/blog/" && $query->is_main_query()) {
+    $query->set('posts_per_page', 7);
+    $query->set('category_name', 'Posts');
+  }
 }
 
 add_action('wp_enqueue_scripts', 'get_styles');
@@ -133,6 +139,21 @@ function get_posts_description($type, $category, $posts) {
       return $item->description;
     }
   }
+}
+
+function get_post_categories($type) {
+  if ($type !== 'post') {
+    return null;
+  }
+
+  $categories = [];
+
+  foreach(get_the_category() as $category) {
+    if ($category->name !== 'Posts') {
+      $categories[] = $category->name;
+    }
+  }
+  return $categories; 
 }
 
 function posts_remain($type, $category, $posts) {
@@ -181,7 +202,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
 
     <?php if (str_contains($css_class, 'collection_inlined') && posts_remain($type, $category, $posts)) : ?>
       <a  
-        href="<?= $type == 'post' ? get_site_url(null, '/blog/') : get_post_type_archive_link($type) ?>" 
+        href="<?= $type == 'post' ? get_site_url('/blog/') : get_post_type_archive_link($type) ?>" 
         class="button button_large button_primary collection__button">
 
         Watch all
@@ -202,7 +223,8 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
 
       the_custom_component($component, '', [
         'src' => $src,
-        'alt' => $alt
+        'alt' => $alt,
+        'categories' => get_post_categories($type)
       ]);
   }
   echo '</div>';

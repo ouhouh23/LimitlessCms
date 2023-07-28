@@ -2,11 +2,10 @@
 /*
  Template name: Our mission
 */
+
+get_template_part('templates/partials/head');
+get_template_part('templates/partials/header') 
 ?>
-
-
-<?php get_template_part('templates/partials/head') ?>
-<?php get_template_part('templates/partials/header') ?>
 
 <section class="section section_default">
   <div class="section__text">
