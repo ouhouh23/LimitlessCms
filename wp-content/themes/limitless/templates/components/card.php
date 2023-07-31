@@ -12,7 +12,7 @@
     if (!empty($atts['categories'])) : ?>
       <div class="card__tags">
         <?php foreach($atts['categories'] as $category) : ?>
-          <a href="<?= site_url("posts?category=$category") ?>" class="tag tag_primary tag_outlined card__tag"><?= $category ?></a>
+          <a href="<?= get_category_link($category['id']) ?>" class="tag tag_primary tag_outlined card__tag"><?= $category['name'] ?></a>
         <?php endforeach?>
       </div>
     <?php endif?>

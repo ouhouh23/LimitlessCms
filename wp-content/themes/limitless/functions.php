@@ -108,6 +108,10 @@ function post_filters($query) {
     $query->set('posts_per_page', 7);
     $query->set('category_name', 'Posts');
   }
+
+  if (!is_admin() && str_contains($_SERVER['REQUEST_URI'], "/category/posts") && $query->is_main_query()) {
+    $query->set('posts_per_page', 7);
+  }
 }
 
 add_action('wp_enqueue_scripts', 'get_styles');
@@ -150,7 +154,7 @@ function get_post_categories($type) {
 
   foreach(get_the_category() as $category) {
     if ($category->name !== 'Posts') {
-      $categories[] = $category->name;
+      $categories[] = ['name' =>$category->name, 'id' => $category->cat_ID];
     }
   }
   return $categories; 
@@ -240,7 +244,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
 
   echo '</section>';
 
-  wp_reset_postdata();
+  // wp_reset_postdata();
 } 
 
 function render_pagination($page, $section = null) {
