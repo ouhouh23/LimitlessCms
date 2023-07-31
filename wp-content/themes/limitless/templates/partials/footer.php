@@ -1,7 +1,7 @@
   <footer class="footer wrapper">
     <div class="footer__container">
       <div class="footer__icon-group">
-        <?php the_custom_component('logo') ?>
+        <?php render_component('logo') ?>
 
         <div class="footer__icons">
           <i class="social social_dark fa-brands fa-facebook-f"></i>

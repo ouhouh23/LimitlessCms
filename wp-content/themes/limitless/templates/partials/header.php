@@ -13,23 +13,11 @@
 <header class="navigation-container wrapper">
   <div class="navigation">
 
-    <?php the_custom_component('logo', 'logo_small') ?>
+    <?php render_component('logo', 'logo_small') ?>
 
     <div class="navigation__group">  
       <nav class="navigation__container">
         <?= $navigation ?>
-<!--         <ul class="navigation__menu">
-            <li>
-              <a href="#" class="link link_large link_primary navigation__item navigation__item_active">
-                  About us
-              </a>
-            </li>
-            <li>
-              <a href="#" class="link link_large link_primary navigation__item">
-                  Our mission
-              </a>
-            </li>
-        </ul> -->
       </nav>
 
       <button

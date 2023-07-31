@@ -16,7 +16,7 @@
 		$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
 			get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "post image";
 
-		the_custom_component('sections/post-featured', '', [
+		render_component('sections/post-featured', '', [
 			'src' => $src,
 			'alt' => $alt
 		]);
@@ -41,7 +41,7 @@
 			      $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
 			        get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "content illustration";
 
-			      the_custom_component('card', 'card_compact', [
+			      render_component('card', 'card_compact', [
 			        'src' => $src,
 			        'alt' => $alt,
 			        'categories' => get_post_categories('post')

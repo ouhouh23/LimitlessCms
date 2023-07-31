@@ -59,7 +59,7 @@
           $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
             get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "post image";
 
-          the_custom_component('card-rounded', '', [
+          render_component('card-rounded', '', [
             'src' => $src,
             'alt' => $alt
           ]);

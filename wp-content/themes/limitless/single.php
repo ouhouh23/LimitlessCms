@@ -10,7 +10,7 @@ $thumbnail_id = get_post_thumbnail_id($post->ID);
 $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
 get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "post image";
 
-the_custom_component('card-opened', '', [
+render_component('card-opened', '', [
 	'src' => $src,
 	'alt' => $alt,
 	'categories' => get_post_categories(get_post_type())

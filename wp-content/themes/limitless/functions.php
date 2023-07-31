@@ -1,128 +1,29 @@
 <?php
 
+// Core
+require_once('includes/core/styles-and-scripts.php');
+require_once('includes/core/svg-support.php');
+
+  // Logo, title, thumbnails, image size support
+  require_once('includes/core/theme-features.php');
+
+  // Navigation menus
+  require_once('includes/core/menu.php');
+  
+// Post
+require_once('includes/post/register-post-type.php');
+require_once('includes/post/filters.php');
+
+// Components
+require_once('includes/component.php');
+require_once('includes/pagination.php');
+
 function dd($value) {
   echo '<pre>';
   var_dump($value);
   echo '</pre>';
   die();
 }
-
-function get_styles() {
-	wp_enqueue_style('main-style', get_theme_file_uri('build/index.css'), null, microtime());
-}
-
-function get_scripts() {
-	wp_enqueue_script('fontawesome', "https://kit.fontawesome.com/6b13e560f5.js");
-	wp_enqueue_script('main-js', get_theme_file_uri('build/index.js'), null, microtime());
-}
-
-function cc_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
-}
-
-function the_custom_component($component, $class = '', $atts = null) {
-	$path = "wp-content/themes/limitless/templates/components/$component.php";
-
-	if (!file_exists($path)) {
-		return;
-	}
-
-	require($path);	
-}
-
-function custom_theme_features() {
-	add_theme_support('custom-logo');
-	add_theme_support('title-tag');
-	add_theme_support('post-thumbnails');
-  add_image_size('compact', 289, 217, true); 
-
-	register_nav_menus( 
-		[
-			'headerMenu' => 'Header menu',
-			'FooterMenu' => 'Footer menu'
-		]);	
-	}
-
-function add_menu_link_class($atts, $item, $args) {
-  if (property_exists($args, 'link_class')) {
-    $atts['class'] = $args->link_class;
-  }
-
-  if ($item->current) {
-  	$class = 'navigation__item_active';
-  	$atts['class'] = isset($atts['class']) ? "{$atts['class']} $class" : $class;
-  }
-
-  return $atts;
-}
-
-function register_post_types() {
-  register_post_type('programs', [
-    'public' => true,
-    'show_in_rest' => true,
-    'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-    'has_archive' => true,
-    'menu_icon' => 'dashicons-media-document',
-
-    'description' => 'Tortor sit nisl purus nunc massa diam velit hac in. Nisl, sem adipiscing risus 
-      pulvinar non sed nullam id integer. Integer quis porttitor mauris arcu, pretium orci quam. 
-      Enim cursus mattis nunc aliquam pharetra feugiat ante sollicitudin',
-
-    'labels' => [
-      'name' => 'Programs',
-      'add_new_item' => 'Add New Program',
-      'edit_item' => 'Edit Program',
-      'all_items' => 'All Programs',
-      'singular_name' => 'Program'
-    ],
-  ]);
-
-  register_post_type('team', [
-    'public' => true,
-    'show_in_rest' => true,
-    'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-    'has_archive' => true,
-    'menu_icon' => 'dashicons-businessperson',
-
-    'description' => 'Tortor sit nisl purus nunc massa diam velit hac in. Nisl, sem adipiscing risus 
-      pulvinar non sed nullam id integer. Integer quis porttitor mauris arcu, pretium orci quam. 
-      Enim cursus mattis nunc aliquam pharetra feugiat ante sollicitudin',
-      
-    'labels' => [
-      'name' => 'Team',
-      'add_new_item' => 'Add new team member',
-      'edit_item' => 'Edit team member',
-      'all_items' => 'All team members',
-      'singular_name' => 'Team member'
-    ],
-  ]);
-}
-
-function post_filters($query) {
-  if (!is_admin() && is_post_type_archive('team') && $query->is_main_query()) {
-    $query->set('posts_per_page', 2);
-  }
-
-  if (!is_admin() && str_contains($_SERVER['REQUEST_URI'], "/blog/") && $query->is_main_query()) {
-    $query->set('posts_per_page', 7);
-    $query->set('category_name', 'Posts');
-  }
-
-  if (!is_admin() && str_contains($_SERVER['REQUEST_URI'], "/category/posts") && $query->is_main_query()) {
-    $query->set('posts_per_page', 7);
-  }
-}
-
-add_action('wp_enqueue_scripts', 'get_styles');
-add_action('wp_enqueue_scripts', 'get_scripts');
-add_action('after_setup_theme', 'custom_theme_features');
-add_action('init', 'register_post_types');
-add_action('pre_get_posts', 'post_filters');
-
-add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
-add_filter('upload_mimes', 'cc_mime_types');
-add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
 function get_posts_title($type) {
   if ($type !== 'post') {
@@ -225,7 +126,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
       $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
         get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "content illustration";
 
-      the_custom_component($component, '', [
+      render_component($component, '', [
         'src' => $src,
         'alt' => $alt,
         'categories' => get_post_categories($type)
@@ -244,30 +145,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
 
   echo '</section>';
 
-  // wp_reset_postdata();
+  wp_reset_postdata();
 } 
 
-function render_pagination($page, $section = null) {
-  $links = paginate_links([
-    'prev_text' => ('<button type="button" class="button button_square 
-                      button_small button_primary button_rounded 
-                      carousel__button carousel__button_left">
-                        <i class=" fa-solid fa-arrow-left"></i>
-                    </button>'
-                  ),
-    'next_text' => ('<button type="button" class="button button_square 
-                      button_small button_primary button_rounded 
-                      carousel__button carousel__button_right">
-                        <i class=" fa-solid fa-arrow-right"></i>
-                    </button>'
-                  ),
-    'base'    => site_url("/$page/%_%#$section"),
-  ]);
-
-  if(!$links) {
-    return;
-  }
-
-  echo "<div class='carousel-group pagination'>$links</div>";
-}
 
