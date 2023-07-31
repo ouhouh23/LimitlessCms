@@ -20,12 +20,21 @@
         <?= $navigation ?>
       </nav>
 
-      <button
-        type="button"
-        class="button button_small button_primary navigation__button" 
-      >
-        donate
-      </button>
+      <?php if (is_user_logged_in()) : ?>
+        <a
+          href="<?= wp_logout_url(site_url())  ?>"
+          class="button button_small button_primary navigation__button" 
+        >
+          Logout
+        </a>
+      <?php else : ?>
+        <a
+          href="<?= site_url('/login') ?>"
+          class="button button_small button_primary navigation__button" 
+        >
+          Login
+        </a>
+      <?php endif ?>
     </div>
 
     <i class="fa-solid fa-bars navigation__mobile-button"></i>

@@ -1,16 +1,28 @@
 .form {
+  @extend %section-indent;
+  
+    padding: {
+    left: 1rem;
+    right: 1rem;
+  }
+
   &__heading {
     color: $primary;
     text-align: center;
   }
 
+  &__body{
+    margin: 0 auto;
+    max-width: 22rem;
+    text-align: center;
+  }
+
   &__item {
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
   }
 
   &__button {
     margin-top: 1rem;
-    width: 100%;
   }
 
   &_horizontal {

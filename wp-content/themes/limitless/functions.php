@@ -3,6 +3,7 @@
 // Core
 require_once('includes/core/styles-and-scripts.php');
 require_once('includes/core/svg-support.php');
+require_once('includes/core/login.php');
 
   // Logo, title, thumbnails, image size support
   require_once('includes/core/theme-features.php');

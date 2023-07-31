@@ -425,12 +425,12 @@ Version: 1.0
   background: #fff;
 }
 
-.subscribe, .socials, .section, .offer__container, .hero_small .hero__body, .container, .collection, .carousel {
+.form, .subscribe, .socials, .section, .offer__container, .hero_small .hero__body, .container, .collection, .carousel {
   padding: 2.5rem 0;
   margin: 0 auto;
 }
 @media screen and (min-width: 576px) {
-  .subscribe, .socials, .section, .offer__container, .hero_small .hero__body, .container, .collection, .carousel {
+  .form, .subscribe, .socials, .section, .offer__container, .hero_small .hero__body, .container, .collection, .carousel {
     padding: 5rem 0;
   }
 }
@@ -1469,6 +1469,7 @@ a {
 }
 .input__message {
   max-width: 100%;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 .input__description {
@@ -3786,16 +3787,24 @@ a {
   margin-top: 0.5rem;
 }
 
+.form {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .form__heading {
   color: #ec6041;
   text-align: center;
 }
+.form__body {
+  margin: 0 auto;
+  max-width: 22rem;
+  text-align: center;
+}
 .form__item {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 .form__button {
   margin-top: 1rem;
-  width: 100%;
 }
 .form_horizontal {
   display: flex;
