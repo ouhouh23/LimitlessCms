@@ -16,7 +16,7 @@ require_once('includes/post/register-post-type.php');
 require_once('includes/post/filters.php');
 
 // Components
-require_once('includes/component.php');
+require_once('includes/element.php');
 require_once('includes/pagination.php');
 
 function dd($value) {
@@ -127,7 +127,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
       $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
         get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "content illustration";
 
-      render_component($component, '', [
+      render_element("components/$component", '', [
         'src' => $src,
         'alt' => $alt,
         'categories' => get_post_categories($type)

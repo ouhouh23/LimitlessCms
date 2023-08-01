@@ -50,6 +50,16 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+
+    @media screen and (max-width: 950px) {
+      flex-direction: column;
+      align-self: flex-start;
+    }
+  }
+
   &__container {
     margin: 0 auto;
   }

@@ -13,7 +13,7 @@
 <header class="navigation-container wrapper">
   <div class="navigation">
 
-    <?php render_component('logo', 'logo_small') ?>
+    <?php render_element('components/logo', 'logo_small') ?>
 
     <div class="navigation__group">  
       <nav class="navigation__container">
@@ -28,12 +28,21 @@
           Logout
         </a>
       <?php else : ?>
-        <a
-          href="<?= site_url('/login') ?>"
-          class="button button_small button_primary navigation__button" 
-        >
-          Login
-        </a>
+        <div class="navigation__buttons">
+          <a
+            href="<?= site_url('/signup') ?>"
+            class="button button_small button_primary navigation__button" 
+          >
+            Sign Up
+          </a>
+
+          <a
+            href="<?= site_url('/login') ?>"
+            class="button button_small button_primary navigation__button" 
+          >
+            Login
+          </a>
+        </div>
       <?php endif ?>
     </div>
 
