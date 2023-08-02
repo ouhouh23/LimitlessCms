@@ -26,7 +26,7 @@ function register_post_types() {
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
     'has_archive' => true,
-    'menu_icon' => 'dashicons-businessperson',
+    'menu_icon' => 'dashicons-buddicons-buddypress-logo',
 
     'description' => 'Tortor sit nisl purus nunc massa diam velit hac in. Nisl, sem adipiscing risus 
       pulvinar non sed nullam id integer. Integer quis porttitor mauris arcu, pretium orci quam. 

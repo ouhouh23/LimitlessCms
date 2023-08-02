@@ -562,6 +562,13 @@ a {
   filter: invert(31%) sepia(10%) saturate(6386%) hue-rotate(190deg) brightness(99%) contrast(91%);
 }
 
+.author {
+  color: #2e5aac;
+  display: inline-block;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
 .avatar {
   display: inline-flex;
   align-items: center;
@@ -837,6 +844,13 @@ a {
   border-radius: var(--border-radius-rounded);
 }
 
+.buttons {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
 .caps {
   text-transform: uppercase;
   font-size: 0.875rem;
@@ -871,6 +885,7 @@ a {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  word-wrap: break-word;
 }
 .card__text > p {
   margin: 0.75rem 0 1.5rem;
@@ -3099,7 +3114,8 @@ a {
   margin-bottom: 2.5rem;
 }
 .hero_small .hero__button {
-  margin-top: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 /*
@@ -3845,6 +3861,9 @@ a {
   .form_horizontal .form__button {
     max-width: 33%;
   }
+}
+.form_wide .form__body {
+  max-width: 40rem;
 }
 
 .header {

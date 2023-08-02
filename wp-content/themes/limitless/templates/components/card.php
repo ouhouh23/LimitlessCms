@@ -15,7 +15,13 @@
           <a href="<?= get_category_link($category['id']) ?>" class="tag tag_primary tag_outlined card__tag"><?= $category['name'] ?></a>
         <?php endforeach?>
       </div>
-    <?php endif?>
+    <?php endif;
+
+    if (get_current_user_id() == $atts['author_id']) {
+      render_element('components/controls', 'button_small');
+    }
+    ?>
+
     <h3 class="heading_large heading_heavy">
       <?php the_title() ?>
     </h3>

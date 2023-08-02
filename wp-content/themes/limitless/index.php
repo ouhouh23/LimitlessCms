@@ -16,9 +16,12 @@
 		$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
 			get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "post image";
 
+		$author_id = get_post_field( 'post_author', $post->ID);
+
 		render_element('/sections/post-featured', '', [
 			'src' => $src,
-			'alt' => $alt
+			'alt' => $alt,
+			'author_id' => $author_id
 		]);
 
 		array_shift($posts);
@@ -34,16 +37,18 @@
   			<div class="collection__container">
   				<?php foreach($posts as $post) {
   					the_post();
-
   					$src = get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : 
       				"/wp-content/themes/limitless/assets/images/cards/placeholder.png";
 			      $thumbnail_id = get_post_thumbnail_id($post->ID);
 			      $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
 			        get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "content illustration";
 
+			      $author_id = get_post_field( 'post_author', $post->ID);
+
 			      render_element('components/card', 'card_compact', [
 			        'src' => $src,
 			        'alt' => $alt,
+							'author_id' => $author_id,
 			        'categories' => get_post_categories('post')
 			      ]);
 			  	}

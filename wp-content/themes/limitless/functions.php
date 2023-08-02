@@ -13,6 +13,8 @@ require_once('includes/core/login.php');
   
 // Post
 require_once('includes/post/register-post-type.php');
+require_once('includes/post/attach-image.php');
+require_once('includes/post/sanitize.php');
 require_once('includes/post/filters.php');
 
 // Components
@@ -127,9 +129,12 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
       $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
         get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "content illustration";
 
+      $author_id = get_post_field( 'post_author', $post->ID);
+
       render_element("components/$component", '', [
         'src' => $src,
         'alt' => $alt,
+        'author_id' => $author_id,
         'categories' => get_post_categories($type)
       ]);
   }
@@ -147,6 +152,4 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
   echo '</section>';
 
   wp_reset_postdata();
-} 
-
-
+}

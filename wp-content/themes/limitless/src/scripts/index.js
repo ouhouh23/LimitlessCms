@@ -10,6 +10,7 @@ import { Carousels } from './components/carousels.js'
 import { Counters } from './components/counters.js'
 import { Shop } from './components/shop.js'
 import { Sliders } from './components/sliders.js'
+import { Post } from './components/Post.js'
 
 const allert = new Close('.allert', '.allert__icon_closed')
 const modal = new Close('.modal', '.allert__icon_closed')
@@ -39,6 +40,7 @@ const shop = new Shop(
   '.shop__item'
 )
 const slider = new Sliders('.slider', '.slider__scale', '.slider__value_current')
+const post = new Post('[data-post]')
 
 document.addEventListener('DOMContentLoaded', () => {
   allert.initClose()
@@ -57,4 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
   counter.initCount()
   shop.initShop()
   slider.initSlider()
+  post.initPost()
 })

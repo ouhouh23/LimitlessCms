@@ -11,7 +11,7 @@
     text-align: center;
   }
 
-  &__body{
+  &__body {
     margin: 0 auto;
     max-width: 22rem;
     text-align: center;
@@ -57,6 +57,12 @@
       @media screen and (min-width: 576px) {
         max-width: 33%;
       }
+    }
+  }
+
+  &_wide {
+    .form__body {
+      max-width: 40rem;
     }
   }
 }
