@@ -29,23 +29,20 @@ var Post = /*#__PURE__*/function () {
   _createClass(Post, [{
     key: "initPost",
     value: function initPost() {
-      var _this = this;
       var forms = document.querySelectorAll(this.form);
       if (forms.length === 0) {
         return;
       }
-      forms.forEach(function (form) {
-        //shorthand?
-        _this.initEvents(form);
-      });
+      forms.forEach(this.initEvents.bind(this));
     }
   }, {
     key: "initEvents",
     value: function initEvents(target) {
       target.addEventListener('submit', this.submitHandler.bind(this));
-      if (target.post_image) {
-        target.post_image.addEventListener('input', this.diplayImage.bind(this));
+      if (!target.post_image) {
+        return;
       }
+      target.post_image.addEventListener('input', this.diplayImage.bind(this));
     }
   }, {
     key: "submitHandler",
@@ -54,22 +51,23 @@ var Post = /*#__PURE__*/function () {
       if (e.target.hasAttribute('data-post-form-create')) this.create(e);
       if (e.target.hasAttribute('data-post-form-update')) this.update(e);
       if (e.target.hasAttribute('data-post-form-delete')) this["delete"](e);
+      this.disableSubmit(e);
     }
   }, {
-    key: "create",
+    key: "sendRequest",
     value: function () {
-      var _create = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+      var _sendRequest = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(slug, requestMethod, requestBody) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return fetch(externalData.root_url + "/wp-json/wp/v2/posts/", {
+              return fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + slug, {
                 headers: {
                   'X-WP-Nonce': externalData.nonce
                 },
-                method: 'POST',
-                body: new FormData(e.target)
+                method: requestMethod,
+                body: requestBody
               });
             case 3:
               _context.next = 8;
@@ -87,84 +85,26 @@ var Post = /*#__PURE__*/function () {
           }
         }, _callee, null, [[0, 5]]);
       }));
-      function create(_x) {
-        return _create.apply(this, arguments);
+      function sendRequest(_x, _x2, _x3) {
+        return _sendRequest.apply(this, arguments);
       }
-      return create;
+      return sendRequest;
     }()
   }, {
-    key: "delete",
-    value: function () {
-      var _delete2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
-              return fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + e.target.postId.value, {
-                headers: {
-                  'X-WP-Nonce': externalData.nonce
-                },
-                method: 'DELETE'
-              });
-            case 3:
-              _context2.next = 8;
-              break;
-            case 5:
-              _context2.prev = 5;
-              _context2.t0 = _context2["catch"](0);
-              console.error(_context2.t0);
-            case 8:
-              location.reload();
-              location.href = externalData.root_url + '/blog';
-            case 10:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2, null, [[0, 5]]);
-      }));
-      function _delete(_x2) {
-        return _delete2.apply(this, arguments);
-      }
-      return _delete;
-    }()
+    key: "create",
+    value: function create(e) {
+      this.sendRequest('', 'POST', new FormData(e.target));
+    }
   }, {
     key: "update",
-    value: function () {
-      var _update = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
-              return fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + e.target.postId.value, {
-                headers: {
-                  'X-WP-Nonce': externalData.nonce
-                },
-                method: 'POST',
-                body: new FormData(e.target)
-              });
-            case 3:
-              _context3.next = 8;
-              break;
-            case 5:
-              _context3.prev = 5;
-              _context3.t0 = _context3["catch"](0);
-              console.error(_context3.t0);
-            case 8:
-              location.reload();
-              location.href = externalData.root_url + '/blog';
-            case 10:
-            case "end":
-              return _context3.stop();
-          }
-        }, _callee3, null, [[0, 5]]);
-      }));
-      function update(_x3) {
-        return _update.apply(this, arguments);
-      }
-      return update;
-    }()
+    value: function update(e) {
+      this.sendRequest(e.target.postId.value, 'POST', new FormData(e.target));
+    }
+  }, {
+    key: "delete",
+    value: function _delete(e) {
+      this.sendRequest(e.target.postId.value, 'DELETE', '');
+    }
   }, {
     key: "diplayImage",
     value: function diplayImage(e) {
@@ -179,6 +119,12 @@ var Post = /*#__PURE__*/function () {
         image.src = event.target.result;
       };
       reader.readAsDataURL(file);
+    }
+  }, {
+    key: "disableSubmit",
+    value: function disableSubmit(e) {
+      var button = e.target.querySelector('button');
+      button.disabled = 'disabled';
     }
   }]);
   return Post;

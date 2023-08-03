@@ -10,17 +10,17 @@ export class Post {
 			return
 		}
 
-		forms.forEach(form => { //shorthand?
-			this.initEvents(form)
-		})
+		forms.forEach(this.initEvents.bind(this))
 	}
 
 	initEvents(target) {
 		target.addEventListener('submit', this.submitHandler.bind(this))
 
-		if (target.post_image) {
-			target.post_image.addEventListener('input', this.diplayImage.bind(this))
+		if (!target.post_image) {
+			return
 		}
+
+		target.post_image.addEventListener('input', this.diplayImage.bind(this))
 	}
 
 	submitHandler(e) {
@@ -29,16 +29,18 @@ export class Post {
 		if (e.target.hasAttribute('data-post-form-create'))  this.create(e)
 		if (e.target.hasAttribute('data-post-form-update')) this.update(e)
 		if (e.target.hasAttribute('data-post-form-delete')) this.delete(e)
+
+		this.disableSubmit(e)
 	}
 
-	async create(e) {
+	async sendRequest(slug, requestMethod, requestBody) {
 		try {
-			await fetch(externalData.root_url + "/wp-json/wp/v2/posts/", {
+			await fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + slug, {
 				headers: {
 					'X-WP-Nonce' : externalData.nonce
 				},
-	      method: 'POST',
-	      body: new FormData(e.target)
+	      method: requestMethod,
+	      body: requestBody
     	});
 		}
 		catch (e) {
@@ -49,39 +51,16 @@ export class Post {
   	location.href = externalData.root_url + '/blog'
 	}
 
-	async delete(e) {
-		try {
-			await fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + e.target.postId.value, {
-				headers: {
-					'X-WP-Nonce' : externalData.nonce
-				},
-	      method: 'DELETE'
-    	});
-		}
-		catch (e) {
-      console.error(e)
-    }
-
-  	location.reload();
-  	location.href = externalData.root_url + '/blog'
+	create(e) {
+		this.sendRequest('', 'POST', new FormData(e.target))
 	}
 
-	async update(e) {
-		try {
-			await fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + e.target.postId.value, {
-				headers: {
-					'X-WP-Nonce' : externalData.nonce
-				},
-	      method: 'POST',
-				body: new FormData(e.target)
-    	});
-		}
-		catch (e) {
-      console.error(e)
-    }
+	update(e) {
+		this.sendRequest(e.target.postId.value, 'POST', new FormData(e.target))
+	}
 
-  	location.reload();
-  	location.href = externalData.root_url + '/blog'
+	delete(e) {
+		this.sendRequest(e.target.postId.value, 'DELETE', '')
 	}
 
 	diplayImage(e) {
@@ -100,5 +79,10 @@ export class Post {
   	};
 
   	reader.readAsDataURL(file);
+	}
+
+	disableSubmit(e) {
+		const button = e.target.querySelector('button')
+		button.disabled = 'disabled'
 	}
 }
