@@ -20,7 +20,7 @@
 }
 
 @mixin checkbox-background-icon($background-icon) {
-  background-image: url("/wp-content/themes/limitless/assets/images/icons/#{$background-icon}.svg");
+  background-image: url("../../assets/images/icons/#{$background-icon}.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

@@ -1,3 +1,5 @@
+import "../styles/style.scss"
+
 import { Close } from './components/close.js'
 import { Input } from './components/input.js'
 import { InputCheck } from './components/inputCheck.js'

@@ -1,7 +1,8 @@
 <?php
 
 function get_styles() {
-	wp_enqueue_style('main-style', get_theme_file_uri('build/index.css'), null, microtime());
+	wp_enqueue_style('normalize', get_theme_file_uri('build/index.css'), null, microtime());
+	wp_enqueue_style('main-style', get_theme_file_uri('build/style-index.css'), null, microtime());
 }
 
 function get_scripts() {

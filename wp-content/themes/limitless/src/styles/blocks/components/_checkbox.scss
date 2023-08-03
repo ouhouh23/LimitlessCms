@@ -85,18 +85,18 @@
   &_indeterminate {
     .checkbox__label {
       .checkbox__icon {
-        background-image: url("/wp-content/themes/limitless/assets/images/icons/minus-icon.svg");
+        background-image: url("../../assets/images/icons/minus-icon.svg");
       }
 
       &:hover {
         .checkbox__icon {
-          background-image: url("/wp-content/themes/limitless/assets/images/icons/minus-icon.svg");
+          background-image: url("../../assets/images/icons/minus-icon.svg");
         }
       }
 
       &:active {
         .checkbox__icon {
-          background-image: url("/wp-content/themes/limitless/assets/images/icons/minus-icon.svg");
+          background-image: url("../../assets/images/icons/minus-icon.svg");
         }
       }
     }
