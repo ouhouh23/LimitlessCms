@@ -11,6 +11,6 @@ if (!is_user_logged_in()) {
 get_template_part('templates/partials/head');
 get_template_part('templates/partials/header'); 
 
-render_element('sections/post-form', 'form_wide');
+render_element('sections/post/form-create', 'form_wide');
 
 get_template_part('templates/partials/footer') ?>

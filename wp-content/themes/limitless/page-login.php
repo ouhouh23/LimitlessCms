@@ -17,6 +17,6 @@ if($_GET['failed'] ?? false) {
 get_template_part('templates/partials/head');
 get_template_part('templates/partials/header'); 
 
-render_element('sections/login-form', '', $errors);
+render_element('sections/login', '', $errors);
 
 get_template_part('templates/partials/footer') ?>

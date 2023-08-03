@@ -18,7 +18,7 @@
 
 		$author_id = get_post_field( 'post_author', $post->ID);
 
-		render_element('/sections/post-featured', '', [
+		render_element('/sections/post/main', '', [
 			'src' => $src,
 			'alt' => $alt,
 			'author_id' => $author_id

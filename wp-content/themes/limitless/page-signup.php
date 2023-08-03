@@ -26,6 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 get_template_part('templates/partials/head');
 get_template_part('templates/partials/header');
 
-render_element('sections/registration-form', '', $errors);
+render_element('sections/registration', '', $errors);
 
 get_template_part('templates/partials/footer');

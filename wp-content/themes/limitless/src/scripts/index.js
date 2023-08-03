@@ -40,7 +40,7 @@ const shop = new Shop(
   '.shop__item'
 )
 const slider = new Sliders('.slider', '.slider__scale', '.slider__value_current')
-const post = new Post('[data-post]')
+const post = new Post('[data-post-form]')
 
 document.addEventListener('DOMContentLoaded', () => {
   allert.initClose()

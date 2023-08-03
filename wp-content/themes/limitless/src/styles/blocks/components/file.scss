@@ -1,0 +1,16 @@
+.file {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+
+	&__label {
+		margin-right: 3rem;
+	}
+
+	&__image {
+		max-width: 12rem;
+		width: 100%;
+		padding: 0.3rem;
+		border: 1px solid $primary;
+	}
+}

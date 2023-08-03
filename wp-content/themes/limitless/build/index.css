@@ -504,6 +504,20 @@ a {
   margin: 0 auto;
 }
 
+.visially-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .allert {
   display: flex;
   align-items: center;
@@ -1279,6 +1293,21 @@ a {
 .dropdown__check_left .dropdown__text {
   order: 2;
   margin-left: 0.7rem;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.file__label {
+  margin-right: 3rem;
+}
+.file__image {
+  max-width: 12rem;
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #ec6041;
 }
 
 .display_large {

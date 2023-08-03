@@ -25,27 +25,35 @@ var Post = /*#__PURE__*/function () {
   function Post(form) {
     _classCallCheck(this, Post);
     this.form = form;
-    this.initPost();
   }
   _createClass(Post, [{
     key: "initPost",
     value: function initPost() {
       var _this = this;
       var forms = document.querySelectorAll(this.form);
-      if (forms === null) {
+      if (forms.length === 0) {
         return;
       }
       forms.forEach(function (form) {
-        form.addEventListener('submit', _this.submitHandler.bind(_this));
+        //shorthand?
+        _this.initEvents(form);
       });
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents(target) {
+      target.addEventListener('submit', this.submitHandler.bind(this));
+      if (target.post_image) {
+        target.post_image.addEventListener('input', this.diplayImage.bind(this));
+      }
     }
   }, {
     key: "submitHandler",
     value: function submitHandler(e) {
       e.preventDefault();
-      if (e.target.hasAttribute('data-post-create')) this.create(e);
-      if (e.target.hasAttribute('data-post-update')) this.update(e);
-      if (e.target.hasAttribute('data-post-delete')) this["delete"](e);
+      if (e.target.hasAttribute('data-post-form-create')) this.create(e);
+      if (e.target.hasAttribute('data-post-form-update')) this.update(e);
+      if (e.target.hasAttribute('data-post-form-delete')) this["delete"](e);
     }
   }, {
     key: "create",
@@ -120,6 +128,58 @@ var Post = /*#__PURE__*/function () {
       }
       return _delete;
     }()
+  }, {
+    key: "update",
+    value: function () {
+      var _update = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
+              return fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + e.target.postId.value, {
+                headers: {
+                  'X-WP-Nonce': externalData.nonce
+                },
+                method: 'POST',
+                body: new FormData(e.target)
+              });
+            case 3:
+              _context3.next = 8;
+              break;
+            case 5:
+              _context3.prev = 5;
+              _context3.t0 = _context3["catch"](0);
+              console.error(_context3.t0);
+            case 8:
+              location.reload();
+              location.href = externalData.root_url + '/blog';
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, null, [[0, 5]]);
+      }));
+      function update(_x3) {
+        return _update.apply(this, arguments);
+      }
+      return update;
+    }()
+  }, {
+    key: "diplayImage",
+    value: function diplayImage(e) {
+      var file = event.target.files[0];
+      var image = e.target.nextElementSibling;
+      var reader = new FileReader();
+      if (!image.classList.contains('file__image')) {
+        image.classList.add('file__image');
+        image.alt = 'Uploaded image.';
+      }
+      reader.onload = function (event) {
+        image.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
   }]);
   return Post;
 }();
@@ -856,7 +916,7 @@ var carousel = new _components_carousels_js__WEBPACK_IMPORTED_MODULE_8__.Carouse
 var counter = new _components_counters_js__WEBPACK_IMPORTED_MODULE_9__.Counters('.counter', '.counter__button_increase', '.counter__button_reduce', '.counter__value');
 var shop = new _components_shop_js__WEBPACK_IMPORTED_MODULE_10__.Shop('.shop', '.shop__filter_sized', '.shop__parameter', 'shop__parameter_active', '.shop__filter_colored', 'shop__parameter_white', 'shop__parameter_orange', '.shop__gallery', '.shop__image', 'shop__image_active', '.shop__item');
 var slider = new _components_sliders_js__WEBPACK_IMPORTED_MODULE_11__.Sliders('.slider', '.slider__scale', '.slider__value_current');
-var post = new _components_Post_js__WEBPACK_IMPORTED_MODULE_12__.Post('[data-post]');
+var post = new _components_Post_js__WEBPACK_IMPORTED_MODULE_12__.Post('[data-post-form]');
 document.addEventListener('DOMContentLoaded', function () {
   allert.initClose();
   modal.initClose();
