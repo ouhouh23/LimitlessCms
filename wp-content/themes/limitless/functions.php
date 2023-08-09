@@ -160,3 +160,6 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
 }
 
 new DynamicBlock('heading');
+new DynamicBlock('caption');
+new DynamicBlock('scroll');
+new DynamicBlock('button');

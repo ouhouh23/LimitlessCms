@@ -113,9 +113,9 @@ module.exports = window["wp"]["element"];
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!***********************************!*\
-  !*** ./blocks/heading/heading.js ***!
-  \***********************************/
+/*!*********************************!*\
+  !*** ./blocks/button/button.js ***!
+  \*********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -129,8 +129,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)("limitless/heading", {
-  title: "Heading",
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)("limitless/button", {
+  title: "Button",
   attributes: {
     text: {
       type: "string"
@@ -138,36 +138,53 @@ __webpack_require__.r(__webpack_exports__);
     size: {
       type: "string"
     },
-    colorClass: {
-      type: "string",
-      default: ""
+    color: {
+      type: "string"
+    },
+    type: {
+      type: "string"
     }
+    // link: { type: "string" }
   },
+
   edit: EditComponent,
   save: SaveComponent
 });
 function EditComponent(props) {
   if (!props.attributes.size) {
     props.setAttributes({
-      size: 'display_small'
+      size: 'button_medium'
+    });
+  }
+  if (!props.attributes.color) {
+    props.setAttributes({
+      color: 'button_primary'
+    });
+  }
+  if (!props.attributes.type) {
+    props.setAttributes({
+      type: ''
     });
   }
   const colors = [{
-    name: "",
-    color: "#121212"
+    name: "button_primary",
+    color: "#ec6041"
   }, {
-    name: "heading_bright",
-    color: "#fff"
+    name: "button_secondary",
+    color: "#b2421a"
+  }, {
+    name: "button_neutral",
+    color: "#848484"
   }];
-  const currentColor = colors.filter(color => {
-    return color.name == props.attributes.colorClass;
+  const currentColor = colors.filter(item => {
+    return item.name == props.attributes.color;
   })[0].color;
   function handleColor(colorCode) {
     const {
       name
     } = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.getColorObjectByColorValue)(colors, colorCode);
     props.setAttributes({
-      colorClass: name
+      color: name
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -183,14 +200,37 @@ function EditComponent(props) {
       });
     },
     options: [{
-      value: "display_small",
+      value: "button_large",
       label: 'Large'
     }, {
-      value: "heading_xxl",
+      value: "button_medium",
       label: 'Meduim'
     }, {
-      value: "heading_xl",
+      value: "button_small",
       label: 'Small'
+    }]
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Type",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    value: props.attributes.type,
+    onChange: type => {
+      props.setAttributes({
+        type: type
+      });
+    },
+    options: [{
+      value: "",
+      label: 'Default'
+    }, {
+      value: "button_ghost",
+      label: 'Ghost'
+    }, {
+      value: "button_borderless",
+      label: 'Borderless'
+    }, {
+      value: "button_rounded",
+      label: 'Rounded'
     }]
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: "Color",
@@ -203,8 +243,8 @@ function EditComponent(props) {
     onChange: handleColor
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     allowedFormats: [],
-    tagName: "h1",
-    className: `heading_heavy ${props.attributes.size} ${props.attributes.colorClass}`,
+    tagName: "span",
+    className: `button ${props.attributes.size} ${props.attributes.color} ${props.attributes.type}`,
     value: props.attributes.text,
     onChange: text => props.setAttributes({
       text
@@ -218,4 +258,4 @@ function SaveComponent(props) {
 
 /******/ })()
 ;
-//# sourceMappingURL=heading.js.map
+//# sourceMappingURL=button.js.map

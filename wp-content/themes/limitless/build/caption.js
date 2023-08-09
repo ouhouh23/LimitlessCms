@@ -114,7 +114,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 /*!***********************************!*\
-  !*** ./blocks/heading/heading.js ***!
+  !*** ./blocks/caption/caption.js ***!
   \***********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -129,13 +129,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)("limitless/heading", {
-  title: "Heading",
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)("limitless/caption", {
+  title: "Caption",
   attributes: {
     text: {
-      type: "string"
-    },
-    size: {
       type: "string"
     },
     colorClass: {
@@ -147,16 +144,11 @@ __webpack_require__.r(__webpack_exports__);
   save: SaveComponent
 });
 function EditComponent(props) {
-  if (!props.attributes.size) {
-    props.setAttributes({
-      size: 'display_small'
-    });
-  }
   const colors = [{
     name: "",
-    color: "#121212"
+    color: "#ec6041"
   }, {
-    name: "heading_bright",
+    name: "caps_bright",
     color: "#fff"
   }];
   const currentColor = colors.filter(color => {
@@ -173,26 +165,6 @@ function EditComponent(props) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wrapper'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: "Size",
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
-    value: props.attributes.size,
-    onChange: size => {
-      props.setAttributes({
-        size: size
-      });
-    },
-    options: [{
-      value: "display_small",
-      label: 'Large'
-    }, {
-      value: "heading_xxl",
-      label: 'Meduim'
-    }, {
-      value: "heading_xl",
-      label: 'Small'
-    }]
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: "Color",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
@@ -203,8 +175,8 @@ function EditComponent(props) {
     onChange: handleColor
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     allowedFormats: [],
-    tagName: "h1",
-    className: `heading_heavy ${props.attributes.size} ${props.attributes.colorClass}`,
+    tagName: "span",
+    className: `caps caps_heavy hero__caption ${props.attributes.colorClass}`,
     value: props.attributes.text,
     onChange: text => props.setAttributes({
       text
@@ -218,4 +190,4 @@ function SaveComponent(props) {
 
 /******/ })()
 ;
-//# sourceMappingURL=heading.js.map
+//# sourceMappingURL=caption.js.map

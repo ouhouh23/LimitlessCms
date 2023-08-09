@@ -327,6 +327,7 @@ a {
 }
 
 .button {
+  display: inline-block;
   color: #fff;
   text-transform: uppercase;
   font-weight: 700;
@@ -534,6 +535,10 @@ a {
 }
 .caps_light {
   font-weight: 300;
+}
+
+.caps.caps_bright {
+  color: #fff;
 }
 
 .card {

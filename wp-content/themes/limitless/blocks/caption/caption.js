@@ -2,11 +2,10 @@ import { SelectControl, PanelBody, PanelRow, ColorPalette } from "@wordpress/com
 import { RichText, InspectorControls, getColorObjectByColorValue } from "@wordpress/block-editor"
 import { registerBlockType } from "@wordpress/blocks"
 
-registerBlockType("limitless/heading", {
-  title: "Heading",
+registerBlockType("limitless/caption", {
+  title: "Caption",
   attributes: {
     text: { type: "string" },
-    size: { type: "string" },
     colorClass: { type: "string", default: "" }
   },
   edit: EditComponent,
@@ -14,14 +13,9 @@ registerBlockType("limitless/heading", {
 })
 
 function EditComponent(props) {
-
-  if (!props.attributes.size) {
-    props.setAttributes({size: 'display_small'})
-  }
-
   const colors = [
-    { name: "", color: "#121212" },
-    { name: "heading_bright", color: "#fff" },
+    { name: "", color: "#ec6041" },
+    { name: "caps_bright", color: "#fff" },
   ]
 
   const currentColor = colors.filter(color => {
@@ -36,22 +30,6 @@ function EditComponent(props) {
   return (
     <div className= {'wrapper'}>
       <InspectorControls>
-        <PanelBody title="Size" initialOpen={true}>
-          <PanelRow>
-            <SelectControl
-                value={props.attributes.size}
-                onChange={(size) => { 
-                  props.setAttributes({size: size})
-                }}
-                options={ [
-                  { value: "display_small", label: 'Large' },
-                  { value: "heading_xxl", label: 'Meduim' },
-                  { value: "heading_xl", label: 'Small' },
-                ]}
-              />
-          </PanelRow>
-        </PanelBody>
-
         <PanelBody title="Color" initialOpen={true}>
           <PanelRow>
             <ColorPalette disableCustomColors={true} clearable={false} colors={colors} value={currentColor} onChange={handleColor} />
@@ -61,8 +39,8 @@ function EditComponent(props) {
 
       <RichText 
         allowedFormats={[]} 
-        tagName="h1" 
-        className={`heading_heavy ${props.attributes.size} ${props.attributes.colorClass}`} 
+        tagName="span" 
+        className={`caps caps_heavy hero__caption ${props.attributes.colorClass}`} 
         value={props.attributes.text} 
         onChange={(text) => props.setAttributes({text})} 
       />
