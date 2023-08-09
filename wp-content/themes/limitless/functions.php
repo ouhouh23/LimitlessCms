@@ -166,4 +166,11 @@ new DynamicBlock('button');
 new DynamicBlock('button-group');
 new DynamicBlock('hero');
 new DynamicBlock('hero-text');
+
 new StaticBlock('header');
+new StaticBlock('programs');
+new StaticBlock('subscription');
+new StaticBlock('team');
+new StaticBlock('blog');
+new StaticBlock('footer');
+
