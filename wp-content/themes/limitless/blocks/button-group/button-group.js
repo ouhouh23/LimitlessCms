@@ -9,7 +9,7 @@ registerBlockType("limitless/button-group", {
 
 function EditComponent() {
   return (
-    <div className="hero__buttons">
+    <div className="hero__buttons wrapper">
       <InnerBlocks allowedBlocks={["limitless/button"]} />
     </div>
   )

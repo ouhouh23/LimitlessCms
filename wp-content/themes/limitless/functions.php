@@ -164,3 +164,4 @@ new DynamicBlock('caption');
 new DynamicBlock('scroll');
 new DynamicBlock('button');
 new DynamicBlock('button-group');
+new DynamicBlock('hero');

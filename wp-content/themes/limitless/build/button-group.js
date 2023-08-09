@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 });
 function EditComponent() {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "hero__buttons"
+    className: "hero__buttons wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
     allowedBlocks: ["limitless/button"]
   }));

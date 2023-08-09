@@ -139,7 +139,6 @@
     padding-bottom: 0;
     display: flex;
     flex-direction: column;
-    background-image: url("../../assets/images/hero/hero-illustrated.png");
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -153,7 +152,6 @@
       margin: 3rem auto 0;
       background: transparent;
       text-align: center;
-      color: $white;
 
       @media screen and (min-width: 1085px) {
         margin-top: auto;
@@ -165,7 +163,6 @@
     }
 
     .hero__caption {
-      color: $white;
       text-align: center;
 
       @media screen and (min-width: 1085px) {
