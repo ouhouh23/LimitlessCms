@@ -1101,6 +1101,10 @@ a {
   font-weight: 300;
 }
 
+.heading_bright {
+  color: #fff;
+}
+
 .input {
   --label-display: block;
   --label-color: #121212;

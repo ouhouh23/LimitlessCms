@@ -21,6 +21,11 @@ require_once('includes/post/filters.php');
 require_once('includes/element.php');
 require_once('includes/pagination.php');
 
+// Blocks
+require_once('includes/Block/Block.php');
+require_once('includes/Block/StaticBlock.php');
+require_once('includes/Block/DynamicBlock.php');
+
 function dd($value) {
   echo '<pre>';
   var_dump($value);
@@ -153,3 +158,5 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
 
   wp_reset_postdata();
 }
+
+new DynamicBlock('heading');
