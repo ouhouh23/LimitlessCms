@@ -9,7 +9,7 @@ registerBlockType("limitless/button", {
     size: { type: "string" },
     color: { type: "string" },
     type: { type: "string" },
-    // link: { type: "string" }
+    link: { type: "string" }
   },
   edit: EditComponent,
   save: SaveComponent
@@ -83,6 +83,17 @@ function EditComponent(props) {
         <PanelBody title="Color" initialOpen={true}>
           <PanelRow>
             <ColorPalette disableCustomColors={true} clearable={false} colors={colors} value={currentColor} onChange={handleColor} />
+          </PanelRow>
+        </PanelBody>
+
+        <PanelBody title="Link" initialOpen={true}>
+          <PanelRow>
+            <RichText 
+              allowedFormats={[]} 
+              tagName="a" 
+              value={props.attributes.link} 
+              onChange={(link) => props.setAttributes({link})} 
+            />
           </PanelRow>
         </PanelBody>
       </InspectorControls>

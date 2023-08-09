@@ -2607,6 +2607,8 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 2.5rem;
+  gap: 2.5rem;
 }
 @media screen and (min-width: 576px) {
   .hero__buttons {
@@ -2619,9 +2621,26 @@ a {
     justify-content: flex-start;
   }
 }
+.hero__buttons div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+@media screen and (min-width: 576px) {
+  .hero__buttons div {
+    align-items: flex-end;
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1085px) {
+  .hero__buttons div {
+    justify-content: flex-start;
+  }
+}
 .hero__button {
   display: inline-block;
-  margin-top: 2.5rem;
   width: 65%;
   white-space: nowrap;
 }
@@ -2631,12 +2650,6 @@ a {
     font-size: 1.25rem;
     line-height: 1.4;
     padding: 1.06rem 1.31rem;
-    margin-right: 2.5rem;
-  }
-}
-@media screen and (min-width: 576px) {
-  .hero__button:last-child {
-    margin-top: 0;
   }
 }
 .hero__image {

@@ -63,6 +63,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2.5rem;
+    gap: 2.5rem;
 
     @media screen and (min-width: 576px) {
       align-items: flex-end;
@@ -72,11 +74,27 @@
     @media screen and (min-width: 1085px) {
       justify-content: flex-start;
     }
+
+    & div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+
+      @media screen and (min-width: 576px) {
+        align-items: flex-end;
+        flex-direction: row;
+      }
+
+      @media screen and (min-width: 1085px) {
+        justify-content: flex-start;
+      }
+    }
   }
 
   &__button {
     display: inline-block;
-    margin-top: 2.5rem;
     width: 65%;
     white-space: nowrap;
 
@@ -85,13 +103,6 @@
       font-size: $font-buttons-xl;
       line-height: $heights-buttons-sm;
       padding: 1.06rem 1.31rem;
-      margin-right: 2.5rem;
-    }
-
-    &:last-child {
-      @media screen and (min-width: 576px) {
-        margin-top: 0;
-      }
     }
   }
 

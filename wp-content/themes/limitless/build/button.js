@@ -143,10 +143,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     type: {
       type: "string"
+    },
+    link: {
+      type: "string"
     }
-    // link: { type: "string" }
   },
-
   edit: EditComponent,
   save: SaveComponent
 });
@@ -241,6 +242,16 @@ function EditComponent(props) {
     colors: colors,
     value: currentColor,
     onChange: handleColor
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Link",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    allowedFormats: [],
+    tagName: "a",
+    value: props.attributes.link,
+    onChange: link => props.setAttributes({
+      link
+    })
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     allowedFormats: [],
     tagName: "span",

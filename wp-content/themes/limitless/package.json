@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "wp-scripts build src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js",
-    "watch": "wp-scripts start src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js",
+    "build": "wp-scripts build src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js blocks/button-group/button-group.js",
+    "watch": "wp-scripts start src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js blocks/button-group/button-group.js",
     "dev": "wp-scripts start",
     "devFast": "wp-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"
