@@ -5,7 +5,5 @@ if (!isset($attributes['imgURL'])) {
 ?>
 
 <section class="hero hero_illustrated wrapper" style="background-image: url('<?= $attributes['imgURL'] ?>')">
-  <div class="hero__text">
-    <?= $content ?>
-  </div>
+  <?= $content ?>
 </section>

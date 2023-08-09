@@ -165,3 +165,5 @@ new DynamicBlock('scroll');
 new DynamicBlock('button');
 new DynamicBlock('button-group');
 new DynamicBlock('hero');
+new DynamicBlock('hero-text');
+new StaticBlock('header');

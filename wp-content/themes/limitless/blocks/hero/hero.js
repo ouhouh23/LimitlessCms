@@ -54,9 +54,7 @@ function EditComponent(props) {
       </InspectorControls>
 
       <section className="hero hero_illustrated wrapper" style={{ backgroundImage: `url('${props.attributes.imgURL}')` }}>
-        <div className="hero__text">
-          <InnerBlocks allowedBlocks={["limitless/heading", "limitless/caption", 'limitless/button-group', 'limitless/scroll']} />
-        </div>
+          <InnerBlocks allowedBlocks={["limitless/header", "limitless/hero-text", 'limitless/scroll']} />
       </section>
     </>
   )
