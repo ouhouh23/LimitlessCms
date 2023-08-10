@@ -113,9 +113,9 @@ module.exports = window["wp"]["element"];
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!***********************************!*\
-  !*** ./blocks/heading/heading.js ***!
-  \***********************************/
+/*!*****************************!*\
+  !*** ./blocks/text/text.js ***!
+  \*****************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -129,8 +129,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)("limitless/heading", {
-  title: "Heading",
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)("limitless/text", {
+  title: "Text",
   attributes: {
     text: {
       type: "string"
@@ -138,9 +138,8 @@ __webpack_require__.r(__webpack_exports__);
     size: {
       type: "string"
     },
-    colorClass: {
-      type: "string",
-      default: ""
+    weight: {
+      type: "string"
     }
   },
   edit: EditComponent,
@@ -149,25 +148,12 @@ __webpack_require__.r(__webpack_exports__);
 function EditComponent(props) {
   if (!props.attributes.size) {
     props.setAttributes({
-      size: 'heading display_small'
+      size: 'paragraph_base'
     });
   }
-  const colors = [{
-    name: "",
-    color: "#121212"
-  }, {
-    name: "heading_bright",
-    color: "#fff"
-  }];
-  const currentColor = colors.filter(color => {
-    return color.name == props.attributes.colorClass;
-  })[0].color;
-  function handleColor(colorCode) {
-    const {
-      name
-    } = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.getColorObjectByColorValue)(colors, colorCode);
+  if (!props.attributes.weight) {
     props.setAttributes({
-      colorClass: name
+      weight: 'paragraph_regular'
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -183,28 +169,36 @@ function EditComponent(props) {
       });
     },
     options: [{
-      value: "heading display_small",
+      value: "paragraph_large",
       label: 'Large'
     }, {
-      value: "heading heading_xxl",
-      label: 'Meduim'
-    }, {
-      value: "heading heading_xl",
-      label: 'Small'
+      value: "paragraph_base",
+      label: 'Base'
     }]
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: "Color",
+    title: "Weight",
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
-    disableCustomColors: true,
-    clearable: false,
-    colors: colors,
-    value: currentColor,
-    onChange: handleColor
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    value: props.attributes.weight,
+    onChange: weight => {
+      props.setAttributes({
+        weight: weight
+      });
+    },
+    options: [{
+      value: "paragraph_heavy",
+      label: 'Bold'
+    }, {
+      value: "paragraph_regular",
+      label: 'Regular'
+    }, {
+      value: "paragraph_light",
+      label: 'Light'
+    }]
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     allowedFormats: [],
-    tagName: "h1",
-    className: `${props.attributes.size} ${props.attributes.colorClass} heading_heavy`,
+    tagName: "p",
+    className: `${props.attributes.size} ${props.attributes.weight}`,
     value: props.attributes.text,
     onChange: text => props.setAttributes({
       text
@@ -218,4 +212,4 @@ function SaveComponent(props) {
 
 /******/ })()
 ;
-//# sourceMappingURL=heading.js.map
+//# sourceMappingURL=text.js.map

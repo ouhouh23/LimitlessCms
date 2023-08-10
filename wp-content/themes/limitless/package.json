@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "wp-scripts build src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js blocks/button-group/button-group.js blocks/hero-text/hero-text.js blocks/hero/hero.js",
-    "watch": "wp-scripts start src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js blocks/button-group/button-group.js blocks/hero-text/hero-text.js blocks/hero/hero.js",
+    "build": "wp-scripts build src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js blocks/button-group/button-group.js blocks/hero-text/hero-text.js blocks/hero/hero.js blocks/section-text/section-text.js blocks/text/text.js blocks/section-image/section-image.js blocks/section/section.js",
+    "watch": "wp-scripts start src/scripts/index.js blocks/heading/heading.js blocks/caption/caption.js blocks/scroll/scroll.js blocks/button/button.js blocks/button-group/button-group.js blocks/hero-text/hero-text.js blocks/hero/hero.js blocks/section-text/section-text.js blocks/text/text.js blocks/section-image/section-image.js blocks/section/section.js",
     "dev": "wp-scripts start",
     "devFast": "wp-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"

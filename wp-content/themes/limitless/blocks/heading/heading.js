@@ -16,7 +16,7 @@ registerBlockType("limitless/heading", {
 function EditComponent(props) {
 
   if (!props.attributes.size) {
-    props.setAttributes({size: 'display_small'})
+    props.setAttributes({size: 'heading display_small'})
   }
 
   const colors = [
@@ -44,9 +44,9 @@ function EditComponent(props) {
                   props.setAttributes({size: size})
                 }}
                 options={ [
-                  { value: "display_small", label: 'Large' },
-                  { value: "heading_xxl", label: 'Meduim' },
-                  { value: "heading_xl", label: 'Small' },
+                  { value: "heading display_small", label: 'Large' },
+                  { value: "heading heading_xxl", label: 'Meduim' },
+                  { value: "heading heading_xl", label: 'Small' },
                 ]}
               />
           </PanelRow>
@@ -62,7 +62,7 @@ function EditComponent(props) {
       <RichText 
         allowedFormats={[]} 
         tagName="h1" 
-        className={`heading_heavy ${props.attributes.size} ${props.attributes.colorClass}`} 
+        className={`${props.attributes.size} ${props.attributes.colorClass} heading_heavy`} 
         value={props.attributes.text} 
         onChange={(text) => props.setAttributes({text})} 
       />

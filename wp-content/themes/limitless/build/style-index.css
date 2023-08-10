@@ -1004,6 +1004,10 @@ a {
   }
 }
 
+.heading {
+  margin: 0;
+}
+
 .heading_xxl {
   font-size: 2rem;
   line-height: 1.12;
@@ -2538,7 +2542,6 @@ a {
   color: #ec6041;
 }
 .footer .footer__heading {
-  color: #414141;
   margin-top: 2rem;
 }
 @media screen and (min-width: 576px) {
@@ -3034,11 +3037,16 @@ a {
   max-width: 45.7rem;
   margin-top: 2rem;
 }
+.section__text p {
+  margin-top: 2.5rem;
+  color: #414141;
+}
 @media screen and (min-width: 1085px) {
   .section__text {
     padding: 2.5rem 4.8rem 2.5rem 1rem;
     margin-top: 0;
     margin-right: -9.6rem;
+    position: relative;
     max-width: 48.5rem;
     background: #fff;
     z-index: 1;
@@ -3056,7 +3064,7 @@ a {
   }
 }
 @media screen and (min-width: 1085px) {
-  .section__heading {
+  .section__heading, .section .heading {
     font-weight: 600;
     letter-spacing: -4px;
   }
@@ -3064,15 +3072,12 @@ a {
 .section__caption {
   color: #ec6041;
 }
-.section__block {
-  margin-top: 2.5rem;
-}
-.section__button {
+.section__button, .section .button {
   display: inline-block;
   margin: 2.5rem auto 0;
 }
 @media screen and (min-width: 1085px) {
-  .section__button {
+  .section__button, .section .button {
     margin-left: 0;
   }
 }
@@ -3097,11 +3102,6 @@ a {
     margin-left: -0.63rem;
   }
 }
-@media screen and (min-width: 1085px) {
-  .section__image {
-    max-width: 52%;
-  }
-}
 .section__role {
   text-align: center;
 }
@@ -3119,11 +3119,11 @@ a {
     padding-bottom: 3.75rem;
   }
 }
-.section_default .section__heading {
+.section_default .section__heading, .section_default .heading {
   text-align: center;
 }
 @media screen and (min-width: 1085px) {
-  .section_default .section__heading {
+  .section_default .section__heading, .section_default .heading {
     text-align: left;
     font-weight: 600;
     letter-spacing: -4px;
@@ -3131,9 +3131,6 @@ a {
 }
 .section_default .section__text {
   max-width: 43.7rem;
-}
-.section_default .section__text > p {
-  margin-top: 2.5rem;
 }
 @media screen and (min-width: 1085px) {
   .section_default .section__text > p {
@@ -3247,6 +3244,13 @@ a {
     align-items: flex-start;
     justify-content: space-between;
   }
+}
+.section .block-editor-inner-blocks, .section .block-editor-block-list__layout {
+  display: inherit;
+  flex-direction: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  gap: inherit;
 }
 
 .shop {

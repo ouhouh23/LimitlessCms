@@ -28,6 +28,11 @@
       @extend %user-paragraph-primary;
     }
 
+    & p {
+      margin-top: 2.5rem;
+      color: $neutral-2;
+    }
+
     @media screen and (min-width: 1085px) {
       padding: 2.5rem 4.8rem 2.5rem 1rem;
       margin: {
@@ -35,6 +40,7 @@
         right: -9.6rem;
       }
 
+      position: relative;
       max-width: 48.5rem;
       background: $white;
       z-index: 1;
@@ -52,7 +58,7 @@
     }
   }
 
-  &__heading {
+  &__heading, .heading {
     @media screen and (min-width: 1085px) {
       font-weight: 600;
       letter-spacing: -4px;
@@ -63,11 +69,7 @@
     color: $primary;
   }
 
-  &__block {
-    margin-top: 2.5rem;
-  }
-
-  &__button {
+  &__button, .button {
     display: inline-block;
     margin: 2.5rem auto 0;
 
@@ -104,12 +106,6 @@
     }
   }
 
-  &__image {
-    @media screen and (min-width: 1085px) {
-      max-width: 52%;
-    }
-  }
-
   &__role {
     text-align: center;
   }
@@ -133,7 +129,7 @@
       }
     }
 
-    .section__heading {
+    .section__heading, .heading {
       text-align: center;
 
       @media screen and (min-width: 1085px) {
@@ -147,8 +143,6 @@
       max-width: 43.7rem;
 
       & > p {
-        margin-top: 2.5rem;
-
         @media screen and (min-width: 1085px) {
           letter-spacing: -0.5px;
         }       
@@ -286,4 +280,13 @@
       }
     }
   }
+
+  & .block-editor-inner-blocks, & .block-editor-block-list__layout {
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    gap: inherit;
+  }
 }
+

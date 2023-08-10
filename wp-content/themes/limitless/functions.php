@@ -163,9 +163,15 @@ new DynamicBlock('heading');
 new DynamicBlock('caption');
 new DynamicBlock('scroll');
 new DynamicBlock('button');
-new DynamicBlock('button-group');
+new DynamicBlock('text');
+
 new DynamicBlock('hero');
 new DynamicBlock('hero-text');
+new DynamicBlock('button-group');
+
+new DynamicBlock('section');
+new DynamicBlock('section-text');
+new DynamicBlock('section-image');
 
 new StaticBlock('header');
 new StaticBlock('programs');

@@ -6,6 +6,10 @@
   @include font-style($font-display-small...);
 }
 
+.heading {
+  margin: 0;
+}
+
 .heading_xxl {
   @include font-style($font-heading-xxl...);
 }
