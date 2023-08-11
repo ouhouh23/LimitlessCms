@@ -5,7 +5,7 @@ import { registerBlockType } from "@wordpress/blocks"
 registerBlockType("limitless/section", {
   title: "Section",
   attributes: {
-    type: { type: "string", default: 'section section_default' },
+    type: { type: "string" },
   },
   edit: EditComponent,
   save: SaveComponent

@@ -8,7 +8,7 @@ import { InputDropdown } from './components/inputDropdown.js'
 import { Tabs } from './components/tabs.js'
 import { Toggles } from './components/toggles.js'
 import { Tooltips } from './components/tooltips.js'
-import { Carousels } from './components/carousels.js'
+import { Carousel } from './components/carousel.js'
 import { Counters } from './components/counters.js'
 import { Shop } from './components/shop.js'
 import { Sliders } from './components/sliders.js'
@@ -26,7 +26,6 @@ const tab = new Tabs('.tab', 'tab_active')
 const toggle = new Toggles('.toggle', '.toggle__input', 'toggle_off')
 const mobileNavigation = new Toggles('.navigation', '.navigation__mobile-button', 'navigation_mobile')
 const tooltip = new Tooltips('.tooltip', '.tooltip__object', '.tooltip__body', '.tooltip__icon')
-const carousel = new Carousels('.carousel', '.carousel__button_left', '.carousel__button_right', '.carousel__gallery', '.carousel__image')
 const counter = new Counters('.counter', '.counter__button_increase', '.counter__button_reduce', '.counter__value')
 const shop = new Shop(
   '.shop',
@@ -57,9 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
   toggle.initToggle()
   mobileNavigation.initToggle()
   tooltip.initTooltip()
-  carousel.initCarousel('--image-counter', '--carousel-inversion', '--carousel-image-width')
   counter.initCount()
   shop.initShop()
   slider.initSlider()
   post.initPost()
+
+  const blocks = document.querySelectorAll('.carousel')
+  if (blocks) {
+    blocks.forEach(element => {
+      (new Carousel(element)).initCarousel('--image-counter', '--carousel-inversion', '--carousel-image-width')
+    })
+  }
 })

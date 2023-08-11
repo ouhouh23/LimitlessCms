@@ -1,4 +1,4 @@
-.carousel {  /* carousel-group. button. button left, right */
+.carousel { 
   @extend %section-indent;
 
   max-width: 90rem;
@@ -52,4 +52,24 @@
       margin-left: 0.5rem;
     }
   }
+
+  .block-list-appender {
+    position: fixed;
+    right: 0;
+  }
+
+  .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: 43.75rem 43.75rem 43.75rem 43.75rem 43.75rem;
+    gap: 1rem;
+
+    .carousel__image {
+      max-width: 100%;
+    }
+  }
 }
+
+  .block-editor-block-list__block .carousel-group {
+    position: fixed;
+    left: 43%;
+  }

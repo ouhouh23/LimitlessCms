@@ -93,7 +93,6 @@ Version: 1.0
 .section__text > p {
   font-size: 1.125rem;
   line-height: 1.55;
-  font-weight: 600;
 }
 
 .card__text > p {
@@ -2216,7 +2215,7 @@ a {
   top: auto;
 }
 
-.carousel { /* carousel-group. button. button left, right */
+.carousel {
   max-width: 90rem;
   overflow: hidden;
 }
@@ -2263,6 +2262,23 @@ a {
 }
 .carousel__button_right {
   margin-left: 0.5rem;
+}
+.carousel .block-list-appender {
+  position: fixed;
+  right: 0;
+}
+.carousel .block-editor-block-list__layout {
+  display: grid;
+  grid-template-columns: 43.75rem 43.75rem 43.75rem 43.75rem 43.75rem;
+  gap: 1rem;
+}
+.carousel .block-editor-block-list__layout .carousel__image {
+  max-width: 100%;
+}
+
+.block-editor-block-list__block .carousel-group {
+  position: fixed;
+  left: 43%;
 }
 
 .collection {

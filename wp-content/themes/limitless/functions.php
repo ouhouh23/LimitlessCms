@@ -173,6 +173,9 @@ new DynamicBlock('section');
 new DynamicBlock('section-text');
 new DynamicBlock('section-image');
 
+new DynamicBlock('carousel');
+new DynamicBlock('carousel-image');
+
 new StaticBlock('header');
 new StaticBlock('programs');
 new StaticBlock('subscription');

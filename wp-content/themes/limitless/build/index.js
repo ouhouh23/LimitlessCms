@@ -82,54 +82,56 @@ class Post {
 
 /***/ }),
 
-/***/ "./src/scripts/components/carousels.js":
-/*!*********************************************!*\
-  !*** ./src/scripts/components/carousels.js ***!
-  \*********************************************/
+/***/ "./src/scripts/components/carousel.js":
+/*!********************************************!*\
+  !*** ./src/scripts/components/carousel.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Carousels: () => (/* binding */ Carousels)
+/* harmony export */   Carousel: () => (/* binding */ Carousel)
 /* harmony export */ });
-class Carousels {
-  constructor(block, buttonLeft, buttonRight, blockBody, blockItem) {
-    this._block = block;
-    this._buttonLeft = buttonLeft;
-    this._buttonRight = buttonRight;
-    this._blockBody = blockBody;
-    this._blockItem = blockItem;
+class Carousel {
+  constructor(block) {
+    this.block = block;
   }
-  initCarousel(start, inversion, imageWidth) {
-    const blocks = document.querySelectorAll(this._block);
-    if (blocks === null) {
+  initCarousel(start, inversion, imageWidth, quantity = null) {
+    this.leftButton = this.block.querySelector('.carousel__button_left');
+    this.rightButton = this.block.querySelector('.carousel__button_right');
+    this.blockGallery = this.block.querySelector('.carousel__gallery');
+    if (quantity != null) {
+      this.stepMax = quantity;
+    } else {
+      this.stepMax = this.blockGallery.querySelectorAll('.carousel__image').length;
+    }
+    this.stepMin = 1;
+    this.imageWidth = imageWidth;
+    this.step = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(start);
+    this.blockInversion = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(inversion);
+    this.initEvents();
+  }
+  initEvents() {
+    this.leftButton.addEventListener('click', this.toLeft.bind(this));
+    this.rightButton.addEventListener('click', this.toRight.bind(this));
+  }
+  toRight() {
+    if (this.step >= this.stepMax) {
       return;
     }
-    blocks.forEach(element => {
-      const toLeft = element.querySelector(this._buttonLeft);
-      const toRight = element.querySelector(this._buttonRight);
-      const blockGallery = element.querySelector(this._blockBody);
-      const items = blockGallery.querySelectorAll(this._blockItem);
-      const itemsAmount = items.length;
-      let itemCounter = ~~window.getComputedStyle(blockGallery).getPropertyValue(start);
-      let blockInversion = ~~window.getComputedStyle(blockGallery).getPropertyValue(inversion);
-      toRight.addEventListener('click', () => {
-        if (itemCounter < itemsAmount) {
-          const itemWidth = ~~window.getComputedStyle(blockGallery).getPropertyValue(imageWidth);
-          blockInversion = blockInversion - itemWidth;
-          blockGallery.style.transform = `translateX(${blockInversion}%)`;
-          itemCounter += 1;
-        }
-      });
-      toLeft.addEventListener('click', () => {
-        if (itemCounter > 1) {
-          const itemWidth = ~~window.getComputedStyle(blockGallery).getPropertyValue(imageWidth);
-          blockInversion = blockInversion + itemWidth;
-          blockGallery.style.transform = `translateX(${blockInversion}%)`;
-          itemCounter -= 1;
-        }
-      });
-    });
+    this.itemWidth = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(this.imageWidth);
+    this.blockInversion = this.blockInversion - this.itemWidth;
+    this.blockGallery.style.transform = `translateX(${this.blockInversion}%)`;
+    this.step += 1;
+  }
+  toLeft() {
+    if (this.step <= this.stepMin) {
+      return;
+    }
+    this.itemWidth = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(this.imageWidth);
+    this.blockInversion = this.blockInversion + this.itemWidth;
+    this.blockGallery.style.transform = `translateX(${this.blockInversion}%)`;
+    this.step -= 1;
   }
 }
 
@@ -635,7 +637,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/tabs.js */ "./src/scripts/components/tabs.js");
 /* harmony import */ var _components_toggles_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/toggles.js */ "./src/scripts/components/toggles.js");
 /* harmony import */ var _components_tooltips_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/tooltips.js */ "./src/scripts/components/tooltips.js");
-/* harmony import */ var _components_carousels_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/carousels.js */ "./src/scripts/components/carousels.js");
+/* harmony import */ var _components_carousel_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/carousel.js */ "./src/scripts/components/carousel.js");
 /* harmony import */ var _components_counters_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/counters.js */ "./src/scripts/components/counters.js");
 /* harmony import */ var _components_shop_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/shop.js */ "./src/scripts/components/shop.js");
 /* harmony import */ var _components_sliders_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/sliders.js */ "./src/scripts/components/sliders.js");
@@ -666,7 +668,6 @@ const tab = new _components_tabs_js__WEBPACK_IMPORTED_MODULE_6__.Tabs('.tab', 't
 const toggle = new _components_toggles_js__WEBPACK_IMPORTED_MODULE_7__.Toggles('.toggle', '.toggle__input', 'toggle_off');
 const mobileNavigation = new _components_toggles_js__WEBPACK_IMPORTED_MODULE_7__.Toggles('.navigation', '.navigation__mobile-button', 'navigation_mobile');
 const tooltip = new _components_tooltips_js__WEBPACK_IMPORTED_MODULE_8__.Tooltips('.tooltip', '.tooltip__object', '.tooltip__body', '.tooltip__icon');
-const carousel = new _components_carousels_js__WEBPACK_IMPORTED_MODULE_9__.Carousels('.carousel', '.carousel__button_left', '.carousel__button_right', '.carousel__gallery', '.carousel__image');
 const counter = new _components_counters_js__WEBPACK_IMPORTED_MODULE_10__.Counters('.counter', '.counter__button_increase', '.counter__button_reduce', '.counter__value');
 const shop = new _components_shop_js__WEBPACK_IMPORTED_MODULE_11__.Shop('.shop', '.shop__filter_sized', '.shop__parameter', 'shop__parameter_active', '.shop__filter_colored', 'shop__parameter_white', 'shop__parameter_orange', '.shop__gallery', '.shop__image', 'shop__image_active', '.shop__item');
 const slider = new _components_sliders_js__WEBPACK_IMPORTED_MODULE_12__.Sliders('.slider', '.slider__scale', '.slider__value_current');
@@ -684,11 +685,16 @@ document.addEventListener('DOMContentLoaded', () => {
   toggle.initToggle();
   mobileNavigation.initToggle();
   tooltip.initTooltip();
-  carousel.initCarousel('--image-counter', '--carousel-inversion', '--carousel-image-width');
   counter.initCount();
   shop.initShop();
   slider.initSlider();
   post.initPost();
+  const blocks = document.querySelectorAll('.carousel');
+  if (blocks) {
+    blocks.forEach(element => {
+      new _components_carousel_js__WEBPACK_IMPORTED_MODULE_9__.Carousel(element).initCarousel('--image-counter', '--carousel-inversion', '--carousel-image-width');
+    });
+  }
 });
 
 /***/ }),
