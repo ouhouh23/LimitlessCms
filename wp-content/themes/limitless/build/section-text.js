@@ -125,7 +125,7 @@ function EditComponent(props) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "section__text"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-    allowedBlocks: ["limitless/heading", "limitless/text", "limitless/caption", "limitless/button"]
+    allowedBlocks: ["limitless/heading", "limitless/text", "limitless/caption", "limitless/button", "limitless/button-group", "limitless/scroll"]
   }));
 }
 function SaveComponent() {

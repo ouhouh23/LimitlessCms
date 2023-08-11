@@ -10,7 +10,7 @@ registerBlockType("limitless/section-text", {
 function EditComponent(props) {
   return (
     <div className="section__text">
-      <InnerBlocks allowedBlocks={["limitless/heading", "limitless/text" ,"limitless/caption", "limitless/button"]} />
+      <InnerBlocks allowedBlocks={["limitless/heading", "limitless/text" ,"limitless/caption", "limitless/button", "limitless/button-group", "limitless/scroll"]} />
     </div>
   )
 }

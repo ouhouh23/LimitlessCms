@@ -72,7 +72,7 @@
         </ul>
     </nav>
   
-    <form class="form footer__form">
+    <form class="footer__form">
       <h3 class="caps caps_heavy form__heading footer__heading">Stay up to date!</h3>
 
       <div class="input input_compact form__item">
