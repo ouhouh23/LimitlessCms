@@ -134,6 +134,9 @@ __webpack_require__.r(__webpack_exports__);
   attributes: {
     type: {
       type: "string"
+    },
+    id: {
+      type: "string"
     }
   },
   edit: EditComponent,
@@ -167,7 +170,18 @@ function EditComponent(props) {
       value: "section",
       label: 'Wide'
     }]
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Section id",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    allowedFormats: [],
+    tagName: "a",
+    value: props.attributes.id,
+    onChange: id => props.setAttributes({
+      id
+    })
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    id: props.attributes.id,
     className: props.attributes.type
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
     allowedBlocks: ["limitless/section-image", "limitless/section-text"]

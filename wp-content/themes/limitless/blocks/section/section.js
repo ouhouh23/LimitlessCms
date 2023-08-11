@@ -1,4 +1,4 @@
-import { InnerBlocks, InspectorControls} from "@wordpress/block-editor"
+import {RichText, InnerBlocks, InspectorControls} from "@wordpress/block-editor"
 import { SelectControl, PanelBody, PanelRow } from "@wordpress/components"
 import { registerBlockType } from "@wordpress/blocks"
 
@@ -6,6 +6,7 @@ registerBlockType("limitless/section", {
   title: "Section",
   attributes: {
     type: { type: "string" },
+    id: { type: "string" }
   },
   edit: EditComponent,
   save: SaveComponent
@@ -34,9 +35,20 @@ function EditComponent(props) {
               />
           </PanelRow>
         </PanelBody>
+
+        <PanelBody title="Section id" initialOpen={true}>
+          <PanelRow>
+            <RichText 
+              allowedFormats={[]} 
+              tagName="a" 
+              value={props.attributes.id} 
+              onChange={(id) => props.setAttributes({id})} 
+            />
+          </PanelRow>
+        </PanelBody>
       </InspectorControls>
 
-      <section className={props.attributes.type}>
+      <section id={props.attributes.id} className={props.attributes.type}>
         <InnerBlocks allowedBlocks={["limitless/section-image", "limitless/section-text"]} />
       </section>
   </div>

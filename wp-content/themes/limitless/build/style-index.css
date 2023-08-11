@@ -2692,18 +2692,18 @@ a {
     max-width: 63%;
   }
 }
-.hero__scroll {
+.hero .scroll-button {
   max-width: 54.8rem;
   margin: 0 auto;
   justify-content: center;
 }
 @media screen and (min-width: 576px) {
-  .hero__scroll {
+  .hero .scroll-button {
     justify-content: flex-start;
   }
 }
 @media screen and (min-width: 1085px) {
-  .hero__scroll {
+  .hero .scroll-button {
     max-width: 100%;
     padding-left: 5rem;
     margin-left: 0;
@@ -2749,13 +2749,13 @@ a {
 .hero_illustrated .hero__buttons {
   justify-content: center;
 }
-.hero_illustrated .hero__scroll {
+.hero_illustrated .scroll-button {
   margin-top: 3.13rem;
   padding-left: 3.5rem;
   padding-bottom: 3.5rem;
 }
 @media screen and (min-width: 576px) {
-  .hero_illustrated .hero__scroll {
+  .hero_illustrated .scroll-button {
     margin-left: 0;
     margin-right: 0;
   }
@@ -3109,7 +3109,6 @@ a {
   }
 }
 .section__scroll_top {
-  transform: rotate(180deg);
   margin-top: 0;
   margin-bottom: 2.5rem;
 }
@@ -3117,6 +3116,9 @@ a {
   .section__scroll_top {
     margin-left: -0.63rem;
   }
+}
+.section__scroll_top > img {
+  transform: rotate(180deg);
 }
 .section__role {
   text-align: center;
