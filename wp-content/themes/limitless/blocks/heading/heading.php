@@ -1,3 +1,3 @@
-<h1 class="<?= $attributes['size'] ?> <?php if(isset($attributes['colorClass'])) echo $attributes['colorClass'] ?> heading_heavy">
+<<?= $attributes['tag'] ?> class="<?= $attributes['size'] ?> <?php if(isset($attributes['colorClass'])) echo $attributes['colorClass'] ?> heading_heavy">
 	<?= $attributes['text'] ?>		
-</h1>
+</<?= $attributes['tag'] ?>>

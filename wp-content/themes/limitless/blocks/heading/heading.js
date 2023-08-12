@@ -7,6 +7,7 @@ registerBlockType("limitless/heading", {
   attributes: {
     text: { type: "string" },
     size: { type: "string" },
+    tag: {type: 'string'},
     colorClass: { type: "string", default: "" }
   },
   edit: EditComponent,
@@ -17,6 +18,10 @@ function EditComponent(props) {
 
   if (!props.attributes.size) {
     props.setAttributes({size: 'heading display_small'})
+  }
+
+  if (!props.attributes.tag) {
+    props.setAttributes({tag: 'h1'})
   }
 
   const colors = [
@@ -51,6 +56,27 @@ function EditComponent(props) {
               />
           </PanelRow>
         </PanelBody>
+
+        <PanelBody title="Heading Tag" initialOpen={true}>
+          <PanelRow>
+            <SelectControl
+                value={props.attributes.tag}
+                onChange={(tag) => { 
+                  props.setAttributes({tag: tag})
+                }}
+                options={ [
+                  { value: "h1", label: 'h1' },
+                  { value: "h2", label: 'h2' },
+                  { value: "h3", label: 'h3' },
+                  { value: "h4", label: 'h4' },
+                  { value: "h5", label: 'h5' },
+                  { value: "h6", label: 'h6' },
+
+                ]}
+              />
+          </PanelRow>
+        </PanelBody>
+
 
         <PanelBody title="Color" initialOpen={true}>
           <PanelRow>

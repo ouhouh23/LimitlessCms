@@ -1,1 +1,1 @@
- <?php render_posts(4, 'post', 'Posts', 'card', 'card_compact') ?>
+ <?php render_posts(4, 'post', 'Posts', 'card', 'card_compact',) ?>

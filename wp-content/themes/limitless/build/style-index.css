@@ -521,9 +521,11 @@ a {
 }
 
 .caps {
+  display: inline-block;
   text-transform: uppercase;
   font-size: 0.875rem;
   line-height: 1.11;
+  margin-bottom: 1rem;
 }
 .caps_heavy {
   font-size: 1.125rem;
@@ -535,8 +537,13 @@ a {
 .caps_light {
   font-weight: 300;
 }
-
-.caps.caps_bright {
+.caps_primary {
+  color: #ec6041;
+}
+.caps_secondary {
+  color: #b2421a;
+}
+.caps_bright {
   color: #fff;
 }
 
@@ -2614,14 +2621,12 @@ a {
     padding: 5rem 7rem 5rem 0;
   }
 }
-.hero__caption {
+.hero .caps {
   text-align: center;
-  color: #ec6041;
   display: block;
-  margin-bottom: 1rem;
 }
 @media screen and (min-width: 1085px) {
-  .hero__caption {
+  .hero .caps {
     text-align: left;
   }
 }
@@ -2738,11 +2743,11 @@ a {
     margin-top: 25rem;
   }
 }
-.hero_illustrated .hero__caption {
+.hero_illustrated .caps {
   text-align: center;
 }
 @media screen and (min-width: 1085px) {
-  .hero_illustrated .hero__caption {
+  .hero_illustrated .caps {
     margin-bottom: 0;
   }
 }

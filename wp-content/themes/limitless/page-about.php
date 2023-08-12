@@ -12,7 +12,7 @@
 
   <div class="hero__body">
     <div class="hero__text">
-      <span class="caps caps_heavy hero__caption">Limitless</span>
+      <span class="caps caps_heavy hero_primary">Limitless</span>
 
       <h1 class="heading_xxl heading_heavy hero__heading">
         <?php the_title() ?>

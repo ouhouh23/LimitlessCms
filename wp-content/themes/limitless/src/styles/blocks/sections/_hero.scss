@@ -43,11 +43,9 @@
     }
   }
 
-  &__caption {
+  .caps {
     text-align: center;
-    color: $primary;
     display: block;
-    margin-bottom: 1rem;
 
     @media screen and (min-width: 1085px) {
       text-align: left;
@@ -162,7 +160,7 @@
       }
     }
 
-    .hero__caption {
+    .caps {
       text-align: center;
 
       @media screen and (min-width: 1085px) {

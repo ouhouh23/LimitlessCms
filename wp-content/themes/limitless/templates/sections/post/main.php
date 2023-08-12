@@ -1,6 +1,6 @@
 <div class="hero__body">
   <div class="hero__text">
-    <span class="caps caps_regular hero__caption">Featured post</span>
+    <span class="caps caps_regular caps_secondary hero__caption">Featured post</span>
 
     <h1 class="heading_xxl heading_heavy">
       <?= wp_trim_words(get_the_excerpt(), 6) ?>

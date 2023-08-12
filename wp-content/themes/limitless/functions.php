@@ -83,7 +83,7 @@ function posts_remain($type, $category, $posts) {
   return intval(wp_count_posts($type)->publish) > count($posts);
 }
 
-function render_posts($number, $type = 'post', $category = '', $component, $css_class = '', $size = null) {
+function render_posts($number, $type = 'post', $category = '', $component, $css_class = '', $id = '#') {
   global $post;
 
   $posts = get_posts([
@@ -102,7 +102,7 @@ function render_posts($number, $type = 'post', $category = '', $component, $css_
   $description = get_posts_description($type, $category, $posts);
 ?>
 
-  <section id="collection" class="collection <?= $css_class ?> wrapper">
+  <section id="<?= $id ?>" class="collection <?= $css_class ?> wrapper">
     <header class="header collection__header">
 
     <h2 class="display_small heading_heavy header__heading">Our <span class="header__underline"><?= $title ?></span></h2>

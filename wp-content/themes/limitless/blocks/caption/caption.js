@@ -6,7 +6,7 @@ registerBlockType("limitless/caption", {
   title: "Caption",
   attributes: {
     text: { type: "string" },
-    colorClass: { type: "string", default: "" }
+    colorClass: { type: "string"}
   },
   edit: EditComponent,
   save: SaveComponent
@@ -14,9 +14,14 @@ registerBlockType("limitless/caption", {
 
 function EditComponent(props) {
   const colors = [
-    { name: "", color: "#ec6041" },
-    { name: "caps_bright", color: "#fff" },
+    { name: "caps_primary", color: "#ec6041" },
+    { name: "caps_secondary", color: "#b2421a" },
+    { name: "caps_bright", color: "#fff" }
   ]
+
+  if (!props.attributes.colorClass) {
+    props.setAttributes({colorClass: 'caps_primary'})
+  }
 
   const currentColor = colors.filter(color => {
     return color.name == props.attributes.colorClass
@@ -40,7 +45,7 @@ function EditComponent(props) {
       <RichText 
         allowedFormats={[]} 
         tagName="span" 
-        className={`caps caps_heavy hero__caption ${props.attributes.colorClass}`} 
+        className={`caps caps_heavy ${props.attributes.colorClass}`} 
         value={props.attributes.text} 
         onChange={(text) => props.setAttributes({text})} 
       />

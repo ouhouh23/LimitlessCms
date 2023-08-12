@@ -138,6 +138,9 @@ __webpack_require__.r(__webpack_exports__);
     size: {
       type: "string"
     },
+    tag: {
+      type: 'string'
+    },
     colorClass: {
       type: "string",
       default: ""
@@ -150,6 +153,11 @@ function EditComponent(props) {
   if (!props.attributes.size) {
     props.setAttributes({
       size: 'heading display_small'
+    });
+  }
+  if (!props.attributes.tag) {
+    props.setAttributes({
+      tag: 'h1'
     });
   }
   const colors = [{
@@ -191,6 +199,35 @@ function EditComponent(props) {
     }, {
       value: "heading heading_xl",
       label: 'Small'
+    }]
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Heading Tag",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    value: props.attributes.tag,
+    onChange: tag => {
+      props.setAttributes({
+        tag: tag
+      });
+    },
+    options: [{
+      value: "h1",
+      label: 'h1'
+    }, {
+      value: "h2",
+      label: 'h2'
+    }, {
+      value: "h3",
+      label: 'h3'
+    }, {
+      value: "h4",
+      label: 'h4'
+    }, {
+      value: "h5",
+      label: 'h5'
+    }, {
+      value: "h6",
+      label: 'h6'
     }]
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: "Color",

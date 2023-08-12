@@ -1,7 +1,9 @@
 .caps {
+  display: inline-block;
   text-transform: uppercase;
   font-size: $font-caps-secondary;
   line-height: $heights-caps;
+  margin-bottom: 1rem;
 
   &_heavy {
     font-size: $font-caps-primary;
@@ -15,8 +17,17 @@
   &_light {
     font-weight: $weight-caps-light;
   }
+
+  &_primary {
+    color: $primary;
+  }
+
+  &_secondary {
+    color: $secondary;
+  }
+
+  &_bright {
+    color: #fff;
+  }
 }
 
-.caps.caps_bright {
-  color: #fff;
-}

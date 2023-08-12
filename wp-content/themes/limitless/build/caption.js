@@ -136,8 +136,7 @@ __webpack_require__.r(__webpack_exports__);
       type: "string"
     },
     colorClass: {
-      type: "string",
-      default: ""
+      type: "string"
     }
   },
   edit: EditComponent,
@@ -145,12 +144,20 @@ __webpack_require__.r(__webpack_exports__);
 });
 function EditComponent(props) {
   const colors = [{
-    name: "",
+    name: "caps_primary",
     color: "#ec6041"
+  }, {
+    name: "caps_secondary",
+    color: "#b2421a"
   }, {
     name: "caps_bright",
     color: "#fff"
   }];
+  if (!props.attributes.colorClass) {
+    props.setAttributes({
+      colorClass: 'caps_primary'
+    });
+  }
   const currentColor = colors.filter(color => {
     return color.name == props.attributes.colorClass;
   })[0].color;
@@ -176,7 +183,7 @@ function EditComponent(props) {
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     allowedFormats: [],
     tagName: "span",
-    className: `caps caps_heavy hero__caption ${props.attributes.colorClass}`,
+    className: `caps caps_heavy ${props.attributes.colorClass}`,
     value: props.attributes.text,
     onChange: text => props.setAttributes({
       text

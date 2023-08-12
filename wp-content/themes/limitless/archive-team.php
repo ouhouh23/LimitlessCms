@@ -5,7 +5,7 @@
 
   <div class="hero__body">
     <div class="hero__text">
-      <span class="caps caps_heavy hero__caption">Our   <?= get_post_type() ?></span>
+      <span class="caps caps_heavy caps_primary hero__caption">Our   <?= get_post_type() ?></span>
 
       <h1 class="heading_xxl heading_heavy hero__heading">
         Meet the people who make it happen.

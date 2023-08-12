@@ -1,1 +1,1 @@
-<?php render_posts(5, 'team', '', 'card-custom', 'collection_vertical collection_inlined') ?>
+<?php render_posts(5, 'team', '', 'card-custom', 'collection_vertical collection_inlined', 'team') ?>
