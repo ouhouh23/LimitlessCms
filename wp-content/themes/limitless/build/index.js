@@ -1,1 +1,413 @@
-(()=>{"use strict";var t,e={637:()=>{class t{constructor(t,e){this._block=t,this._closeButton=e}initClose(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{t.querySelector(this._closeButton).addEventListener("click",(()=>{t.style.display="none"}))}))}}class e{constructor(t,e,s,i){this._block=t,this._input=e,this._activeClass=s,this._indeterminateClass=i}initCheck(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{t.querySelector(this._input).addEventListener("change",(()=>{t.classList.contains(this._indeterminateClass)?t.classList.remove(this._indeterminateClass):t.classList.toggle(this._activeClass)}))}))}}class s{constructor(t,e,s){this._block=t,this._item=e,this._toggleClass=s}initToggle(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{t.querySelector(this._item).addEventListener("click",(()=>{t.classList.toggle(this._toggleClass)}))}))}}class i{constructor(t){this.block=t}initCarousel(t,e,s,i=null){this.leftButton=this.block.querySelector(".carousel__button_left"),this.rightButton=this.block.querySelector(".carousel__button_right"),this.blockGallery=this.block.querySelector(".carousel__gallery"),this.stepMax=null!=i?i:this.blockGallery.querySelectorAll(".carousel__image").length,this.stepMin=1,this.imageWidth=s,this.step=~~window.getComputedStyle(this.blockGallery).getPropertyValue(t),this.blockInversion=~~window.getComputedStyle(this.blockGallery).getPropertyValue(e),this.initEvents()}initEvents(){this.leftButton.addEventListener("click",this.toLeft.bind(this)),this.rightButton.addEventListener("click",this.toRight.bind(this))}toRight(){this.step>=this.stepMax||(this.itemWidth=~~window.getComputedStyle(this.blockGallery).getPropertyValue(this.imageWidth),this.blockInversion=this.blockInversion-this.itemWidth,this.blockGallery.style.transform=`translateX(${this.blockInversion}%)`,this.step+=1)}toLeft(){this.step<=this.stepMin||(this.itemWidth=~~window.getComputedStyle(this.blockGallery).getPropertyValue(this.imageWidth),this.blockInversion=this.blockInversion+this.itemWidth,this.blockGallery.style.transform=`translateX(${this.blockInversion}%)`,this.step-=1)}}const o=new t(".allert",".allert__icon_closed"),l=new t(".modal",".allert__icon_closed"),c=new t(".announcement",".announcement__icon"),r=new e(".checkbox",".checkbox__input","checkbox_selected","checkbox_indeterminate"),n=new e(".radio",".radio__input","radio_selected"),a=new class{constructor(t,e,s){this._block=t,this._input=e,this._label=s}paintLabel(t,e){const s=document.querySelectorAll(this._block);null!==s&&s.forEach((s=>{const i=s.querySelector(this._input),o=s.querySelector(this._label);i.onfocus=()=>{o.style.color=t},i.onblur=()=>{o.style.color=e}}))}}(".input_compact",".input__body",".input__label"),h=new class{constructor(t,e,s){this._block=t,this._input=e,this._closeButton=s}initReset(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{const e=t.querySelector(this._closeButton),s=t.querySelector(this._input);e.addEventListener("click",(()=>{s.value=""}))}))}}(".search",".search__body",".search__icon_closed"),u=new class{constructor(t,e,s){this._block=t,this._input=e,this._closeButton=s}initDropdown(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{const e=t.querySelector(this._input);t.querySelector(this._closeButton).addEventListener("click",(()=>{"block"===e.style.display?e.style.display="none":e.style.display="block"}))}))}}(".dropdown",".dropdown__menu",".dropdown__button"),_=new class{constructor(t,e){this._block=t,this._activeClass=e}initTab(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{t.classList.contains(this._activeClass)||t.addEventListener("click",(()=>{t.classList.add(this._activeClass)}))}))}}(".tab","tab_active"),d=new s(".toggle",".toggle__input","toggle_off"),m=new s(".navigation",".navigation__mobile-button","navigation_mobile"),b=new class{constructor(t,e,s,i){this._block=t,this._object=e,this._body=s,this._closeButton=i}initTooltip(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{const e=t.querySelector(this._object),s=t.querySelector(this._body),i=t.querySelector(this._closeButton);e.addEventListener("click",(()=>{s.style.display="flex"})),i.addEventListener("click",(()=>{s.style.display="none"}))}))}}(".tooltip",".tooltip__object",".tooltip__body",".tooltip__icon"),p=new class{constructor(t,e,s,i){this._block=t,this._buttonIncrease=e,this._buttonReduce=s,this._blockValue=i}initCount(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{const e=t.querySelector(this._buttonIncrease),s=t.querySelector(this._buttonReduce),i=t.querySelector(this._blockValue);let o=~~i.innerHTML;const l=t=>{o=~~i.innerHTML,o+=t,i.innerHTML=o};e.addEventListener("click",(()=>{l(1)})),s.addEventListener("click",(()=>{o>0&&l(-1)}))}))}}(".counter",".counter__button_increase",".counter__button_reduce",".counter__value"),y=new class{constructor(t,e,s,i,o,l,c,r,n,a,h){this._block=t,this._parameter=s,this._parameterActive=i,this._sizesBlock=e,this._colorBlock=o,this._colorFirst=l,this._colorSecond=c,this._imageBlock=r,this._imageItem=n,this._imageItemActive=a,this._shopItem=h}initShop(){const t=document.querySelectorAll(this._block);if(null===t)return;const e=(t,e,s)=>{t.classList.contains(e)||(s.querySelector(`.${e}`).classList.remove(e),t.classList.add(e))},s=t=>{const s=t.querySelector(this._sizesBlock);s.querySelectorAll(this._parameter).forEach((t=>{t.addEventListener("click",(()=>{e(t,this._parameterActive,s)}))}))},i=t=>{const s=t.querySelector(this._colorBlock),i=s.querySelector(`.${this._colorFirst}`),o=s.querySelector(`.${this._colorSecond}`),l=t.querySelector(this._imageBlock),c=l.querySelectorAll(this._imageItem),r=t.querySelector(this._shopItem);(()=>{c.forEach((t=>{t.addEventListener("click",(()=>{if(t.classList.contains(this._imageItemActive))return;const s=t.src;r.src=s,1==(t===c[0]?1:2)?(i.classList.add(this._parameterActive),o.classList.remove(this._parameterActive)):(i.classList.remove(this._parameterActive),o.classList.add(this._parameterActive)),e(t,this._imageItemActive,l)}))}))})(),(()=>{s.querySelectorAll(this._parameter).forEach((t=>{t.addEventListener("click",(()=>{if(!t.classList.contains(this._parameterActive)){if(t.classList.contains(this._colorFirst)){const t=c[0].src;r.src=t,l.querySelector(`.${this._imageItemActive}`).classList.remove(this._imageItemActive),c[0].classList.add(this._imageItemActive)}else{const t=c[1].src;r.src=t,l.querySelector(`.${this._imageItemActive}`).classList.remove(this._imageItemActive),c[1].classList.add(this._imageItemActive)}e(t,this._parameterActive,s)}}))}))})()};t.forEach((t=>{s(t),i(t)}))}}(".shop",".shop__filter_sized",".shop__parameter","shop__parameter_active",".shop__filter_colored","shop__parameter_white","shop__parameter_orange",".shop__gallery",".shop__image","shop__image_active",".shop__item"),v=new class{constructor(t,e,s){this._block=t,this._blockScale=e,this._blockValue=s}initSlider(){const t=document.querySelectorAll(this._block);null!==t&&t.forEach((t=>{const e=t.querySelector(this._blockScale),s=t.querySelector(this._blockValue);let i=e.value;s.style.width=`calc(${i}% + 0.4rem`,e.style.background=`linear-gradient(to right, #EC6041 ${i}%, #e0e0e0 ${i}% 100%)`,e.oninput=()=>{i=e.value,s.innerHTML=i,e.value<40?s.style.width=`calc(${i}% + 0.8rem`:e.value<60?s.style.width=`calc(${i}% + 0.5rem`:e.value<80?s.style.width=`calc(${i}% + 0.2rem`:s.style.width=`calc(${i}% - 0.2rem`,e.style.background=`linear-gradient(to right, #EC6041 ${i}%, #e0e0e0 ${i}% 100%)`}}))}}(".slider",".slider__scale",".slider__value_current"),g=new class{constructor(t){this.form=t}initPost(){const t=document.querySelectorAll(this.form);0!==t.length&&t.forEach(this.initEvents.bind(this))}initEvents(t){t.addEventListener("submit",this.submitHandler.bind(this)),t.post_image&&t.post_image.addEventListener("input",this.diplayImage.bind(this))}submitHandler(t){t.preventDefault(),t.target.hasAttribute("data-post-form-create")&&this.create(t),t.target.hasAttribute("data-post-form-update")&&this.update(t),t.target.hasAttribute("data-post-form-delete")&&this.delete(t),this.disableSubmit(t)}async sendRequest(t,e,s){try{await fetch(externalData.root_url+"/wp-json/wp/v2/posts/"+t,{headers:{"X-WP-Nonce":externalData.nonce},method:e,body:s})}catch(t){console.error(t)}location.reload(),location.href=externalData.root_url+"/blog"}create(t){this.sendRequest("","POST",new FormData(t.target))}update(t){this.sendRequest(t.target.postId.value,"POST",new FormData(t.target))}delete(t){this.sendRequest(t.target.postId.value,"DELETE","")}diplayImage(t){const e=event.target.files[0],s=t.target.nextElementSibling,i=new FileReader;s.classList.contains("file__image")||(s.classList.add("file__image"),s.alt="Uploaded image."),i.onload=function(t){s.src=t.target.result},i.readAsDataURL(e)}disableSubmit(t){t.target.querySelector("button").disabled="disabled"}}("[data-post-form]");document.addEventListener("DOMContentLoaded",(()=>{o.initClose(),l.initClose(),c.initClose(),r.initCheck(),n.initCheck(),a.paintLabel("#EC6041","var(--label-color)"),h.initReset(),u.initDropdown(),_.initTab(),d.initToggle(),m.initToggle(),b.initTooltip(),p.initCount(),y.initShop(),v.initSlider(),g.initPost();const t=document.querySelectorAll(".carousel");t&&t.forEach((t=>{new i(t).initCarousel("--image-counter","--carousel-inversion","--carousel-image-width")}))}))}},s={};function i(t){var o=s[t];if(void 0!==o)return o.exports;var l=s[t]={exports:{}};return e[t](l,l.exports,i),l.exports}i.m=e,t=[],i.O=(e,s,o,l)=>{if(!s){var c=1/0;for(h=0;h<t.length;h++){s=t[h][0],o=t[h][1],l=t[h][2];for(var r=!0,n=0;n<s.length;n++)(!1&l||c>=l)&&Object.keys(i.O).every((t=>i.O[t](s[n])))?s.splice(n--,1):(r=!1,l<c&&(c=l));if(r){t.splice(h--,1);var a=o();void 0!==a&&(e=a)}}return e}l=l||0;for(var h=t.length;h>0&&t[h-1][2]>l;h--)t[h]=t[h-1];t[h]=[s,o,l]},i.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e),(()=>{var t={826:0,431:0};i.O.j=e=>0===t[e];var e=(e,s)=>{var o,l,c=s[0],r=s[1],n=s[2],a=0;if(c.some((e=>0!==t[e]))){for(o in r)i.o(r,o)&&(i.m[o]=r[o]);if(n)var h=n(i)}for(e&&e(s);a<c.length;a++)l=c[a],i.o(t,l)&&t[l]&&t[l][0](),t[l]=0;return i.O(h)},s=self.webpackChunklimitless=self.webpackChunklimitless||[];s.forEach(e.bind(null,0)),s.push=e.bind(null,s.push.bind(s))})();var o=i.O(void 0,[431],(()=>i(637)));o=i.O(o)})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/scripts/components/Carousel.js":
+/*!********************************************!*\
+  !*** ./src/scripts/components/Carousel.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Carousel: () => (/* binding */ Carousel)
+/* harmony export */ });
+class Carousel {
+  constructor(block) {
+    this.block = block;
+  }
+  initCarousel(start, inversion, imageWidth, quantity = null) {
+    this.leftButton = this.block.querySelector('.carousel__button_left');
+    this.rightButton = this.block.querySelector('.carousel__button_right');
+    this.blockGallery = this.block.querySelector('.carousel__gallery');
+    if (quantity != null) {
+      this.stepMax = quantity;
+    } else {
+      this.stepMax = this.blockGallery.querySelectorAll('.carousel__image').length;
+    }
+    this.stepMin = 1;
+    this.imageWidth = imageWidth;
+    this.step = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(start);
+    this.blockInversion = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(inversion);
+    this.initEvents();
+  }
+  initEvents() {
+    this.leftButton.addEventListener('click', this.toLeft.bind(this));
+    this.rightButton.addEventListener('click', this.toRight.bind(this));
+  }
+  toRight() {
+    if (this.step >= this.stepMax) {
+      return;
+    }
+    this.itemWidth = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(this.imageWidth);
+    this.blockInversion = this.blockInversion - this.itemWidth;
+    this.blockGallery.style.transform = `translateX(${this.blockInversion}%)`;
+    this.step += 1;
+  }
+  toLeft() {
+    if (this.step <= this.stepMin) {
+      return;
+    }
+    this.itemWidth = ~~window.getComputedStyle(this.blockGallery).getPropertyValue(this.imageWidth);
+    this.blockInversion = this.blockInversion + this.itemWidth;
+    this.blockGallery.style.transform = `translateX(${this.blockInversion}%)`;
+    this.step -= 1;
+  }
+}
+
+/***/ }),
+
+/***/ "./src/scripts/components/Input.js":
+/*!*****************************************!*\
+  !*** ./src/scripts/components/Input.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Input: () => (/* binding */ Input)
+/* harmony export */ });
+class Input {
+  constructor(block, input, label) {
+    this._block = block;
+    this._input = input;
+    this._label = label;
+  }
+  paintLabel(focusColor, blurColor) {
+    const blocks = document.querySelectorAll(this._block);
+    if (blocks === null) {
+      return;
+    }
+    blocks.forEach(element => {
+      const blockInput = element.querySelector(this._input);
+      const blockLabel = element.querySelector(this._label);
+      blockInput.onfocus = () => {
+        blockLabel.style.color = focusColor;
+      };
+      blockInput.onblur = () => {
+        blockLabel.style.color = blurColor;
+      };
+    });
+  }
+}
+
+/***/ }),
+
+/***/ "./src/scripts/components/Post.js":
+/*!****************************************!*\
+  !*** ./src/scripts/components/Post.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Post: () => (/* binding */ Post)
+/* harmony export */ });
+class Post {
+  constructor(form) {
+    this.form = form;
+  }
+  initPost() {
+    const forms = document.querySelectorAll(this.form);
+    if (forms.length === 0) {
+      return;
+    }
+    forms.forEach(this.initEvents.bind(this));
+  }
+  initEvents(target) {
+    target.addEventListener('submit', this.submitHandler.bind(this));
+    if (!target.post_image) {
+      return;
+    }
+    target.post_image.addEventListener('input', this.diplayImage.bind(this));
+  }
+  submitHandler(e) {
+    e.preventDefault();
+    if (e.target.hasAttribute('data-post-form-create')) this.create(e);
+    if (e.target.hasAttribute('data-post-form-update')) this.update(e);
+    if (e.target.hasAttribute('data-post-form-delete')) this.delete(e);
+    this.disableSubmit(e);
+  }
+  async sendRequest(slug, requestMethod, requestBody) {
+    try {
+      await fetch(externalData.root_url + "/wp-json/wp/v2/posts/" + slug, {
+        headers: {
+          'X-WP-Nonce': externalData.nonce
+        },
+        method: requestMethod,
+        body: requestBody
+      });
+    } catch (e) {
+      console.error(e);
+    }
+    location.reload();
+    location.href = externalData.root_url + '/blog';
+  }
+  create(e) {
+    this.sendRequest('', 'POST', new FormData(e.target));
+  }
+  update(e) {
+    this.sendRequest(e.target.postId.value, 'POST', new FormData(e.target));
+  }
+  delete(e) {
+    this.sendRequest(e.target.postId.value, 'DELETE', '');
+  }
+  diplayImage(e) {
+    const file = event.target.files[0];
+    const image = e.target.nextElementSibling;
+    const reader = new FileReader();
+    if (!image.classList.contains('file__image')) {
+      image.classList.add('file__image');
+      image.alt = 'Uploaded image.';
+    }
+    reader.onload = function (event) {
+      image.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  disableSubmit(e) {
+    const button = e.target.querySelector('button');
+    button.disabled = 'disabled';
+  }
+}
+
+/***/ }),
+
+/***/ "./src/scripts/components/Toggles.js":
+/*!*******************************************!*\
+  !*** ./src/scripts/components/Toggles.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Toggles: () => (/* binding */ Toggles)
+/* harmony export */ });
+class Toggles {
+  constructor(block, item, toggleClass) {
+    this._block = block;
+    this._item = item;
+    this._toggleClass = toggleClass;
+  }
+  initToggle() {
+    const blocks = document.querySelectorAll(this._block);
+    if (blocks === null) {
+      return;
+    }
+    blocks.forEach(element => {
+      const blockTarget = element.querySelector(this._item);
+      blockTarget.addEventListener('click', () => {
+        element.classList.toggle(this._toggleClass);
+      });
+    });
+  }
+}
+
+/***/ }),
+
+/***/ "./src/scripts/index.js":
+/*!******************************!*\
+  !*** ./src/scripts/index.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/style.scss */ "./src/styles/style.scss");
+/* harmony import */ var _components_Input_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Input.js */ "./src/scripts/components/Input.js");
+/* harmony import */ var _components_Toggles_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Toggles.js */ "./src/scripts/components/Toggles.js");
+/* harmony import */ var _components_Carousel_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Carousel.js */ "./src/scripts/components/Carousel.js");
+/* harmony import */ var _components_Post_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Post.js */ "./src/scripts/components/Post.js");
+
+
+
+
+
+const input = new _components_Input_js__WEBPACK_IMPORTED_MODULE_1__.Input('.input_compact', '.input__body', '.input__label');
+const toggle = new _components_Toggles_js__WEBPACK_IMPORTED_MODULE_2__.Toggles('.toggle', '.toggle__input', 'toggle_off');
+const mobileNavigation = new _components_Toggles_js__WEBPACK_IMPORTED_MODULE_2__.Toggles('.navigation', '.navigation__mobile-button', 'navigation_mobile');
+const post = new _components_Post_js__WEBPACK_IMPORTED_MODULE_4__.Post('[data-post-form]');
+document.addEventListener('DOMContentLoaded', () => {
+  input.paintLabel('#EC6041', 'var(--label-color)');
+  mobileNavigation.initToggle();
+  post.initPost();
+  const blocks = document.querySelectorAll('.carousel');
+  if (blocks) {
+    blocks.forEach(element => {
+      new _components_Carousel_js__WEBPACK_IMPORTED_MODULE_3__.Carousel(element).initCarousel('--image-counter', '--carousel-inversion', '--carousel-image-width');
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./src/styles/style.scss":
+/*!*******************************!*\
+  !*** ./src/styles/style.scss ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var chunkIds = deferred[i][0];
+/******/ 				var fn = deferred[i][1];
+/******/ 				var priority = deferred[i][2];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"index": 0,
+/******/ 			"./style-index": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 			var runtime = data[2];
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunklimitless"] = self["webpackChunklimitless"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index"], () => (__webpack_require__("./src/scripts/index.js")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=index.js.map

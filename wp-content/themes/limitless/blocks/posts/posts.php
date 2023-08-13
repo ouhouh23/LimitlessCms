@@ -32,7 +32,7 @@ else {
 if (count($posts) > 0) : ?>
   <section class="collection wrapper">
 		<header class="header collection__header">
-		<h2 class="heading_xxl heading_heavy header__heading">All posts</h2>
+			<h2 class="heading_xxl heading_heavy header__heading">All posts</h2>
 		</header>
 
 		<div class="collection__container">

@@ -1,7 +1,7 @@
 import { InnerBlocks, } from "@wordpress/block-editor"
 import { registerBlockType } from "@wordpress/blocks"
 import {useEffect, useRef, useState} from "react";
-import { Carousel } from "/src/scripts/components/carousel.js"
+import { Carousel } from "/src/scripts/components/Carousel.js"
 import { useSelect } from '@wordpress/data';
 
 registerBlockType("limitless/carousel", {
