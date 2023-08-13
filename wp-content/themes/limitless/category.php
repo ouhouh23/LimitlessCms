@@ -17,9 +17,12 @@
 		    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ? 
 		      get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : "content illustration";
 
+		    $author_id = get_post_field( 'post_author', $post->ID);
+
 		    render_element('components/card', 'card_compact', [
 		      'src' => $src,
 		      'alt' => $alt,
+		      'author_id' => $author_id,
 		      'categories' => get_post_categories('post')
 		    ]);
 			}

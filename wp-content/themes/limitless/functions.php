@@ -14,7 +14,6 @@ require_once('includes/core/login.php');
 // Post
 require_once('includes/post/register-post-type.php');
 require_once('includes/post/attach-image.php');
-require_once('includes/post/sanitize.php');
 require_once('includes/post/filters.php');
 
 // Components
@@ -182,4 +181,7 @@ new StaticBlock('subscription');
 new StaticBlock('team');
 new StaticBlock('blog');
 new StaticBlock('footer');
+
+new StaticBlock('posts');
+new StaticBlock('single');
 
